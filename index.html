@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Thai food in Astoria, NY | Enthaice Thai Kitchen</title>
+    <meta name="description" content="Welcome to Enthaice Thai Kitchen. Located on 31st Avenue, Enthaice Thai Kitchen brings bold Northern Thai cooking to the heart of Astoria.">
+    
+    <style>
+        /* Dark & Gold Palette */
+        :root {
+            --bg-main: #12100e; 
+            --bg-card: #1c1916; 
+            --bg-footer: #0a0908;
+            --accent-gold: #dcb345;
+            --accent-gold-hover: #bda036;
+            --text-main: #f5f5f5;
+            --text-muted: #a09d98;
+            --font-heading: 'Lora', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        
+        /* Gold Primary Buttons */
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 4px; 
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover { 
+            background-color: var(--accent-gold-hover); 
+            transform: translateY(-2px);
+        }
+
+        /* Gold Secondary Buttons (Outline) */
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-gold);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-gold);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(220, 179, 69, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Transparent Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            background-color: transparent;
+            position: absolute; 
+            width: 100%;
+            z-index: 100;
+        }
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-gold); font-weight: 700; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .nav-actions { display: flex; align-items: center; gap: 20px; }
+
+        /* Split Asymmetrical Hero */
+        .hero {
+            display: flex;
+            min-height: 90vh;
+            padding: 100px 5% 50px;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+        }
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+            z-index: 2;
+        }
+        .hero-text p.seo-tag { color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 15px; font-weight: 600; }
+        .hero-text h1 { font-size: 4rem; margin-bottom: 25px; line-height: 1.1; }
+        .hero-text p.subtitle { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; }
+        .hero-image { flex: 1; height: 70vh; background: linear-gradient(rgba(18, 16, 14, 0.2), rgba(18, 16, 14, 0.4)), url('https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&q=80') center/cover; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; box-shadow: -20px 20px 0px rgba(220, 179, 69, 0.08); }
+
+        /* Welcome Section */
+        .section { padding: 100px 5%; }
+        .welcome-split { display: flex; align-items: center; gap: 60px; }
+        .welcome-image { flex: 1; }
+        .welcome-image img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); object-fit: cover; max-height: 500px; }
+        .welcome-text { flex: 1; }
+        .welcome-text h2 { font-size: 2.8rem; margin-bottom: 25px; line-height: 1.2; }
+        .welcome-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.8; }
+
+        /* Crafted for the Curious - Masonry Section */
+        .crafted-section { padding: 80px 5%; background-color: var(--bg-card); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .crafted-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .crafted-header h2 { font-size: 2.8rem; margin-bottom: 20px; }
+        .crafted-header p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .masonry-grid { column-count: 3; column-gap: 20px; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: transform 0.3s ease; }
+        .masonry-item:hover { transform: translateY(-5px); }
+        .masonry-item img { width: 100%; height: auto; display: block; }
+
+        /* Sip Something Special - Slider Section */
+        .sip-section { padding: 100px 5%; display: flex; align-items: center; gap: 60px; }
+        .sip-text { flex: 1; }
+        .sip-text h2 { font-size: 2.8rem; margin-bottom: 20px; }
+        .sip-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; max-width: 90%; }
+        .sip-slider-container { flex: 1; position: relative; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+        .slide.active { opacity: 1; z-index: 2; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to top, rgba(18,16,14,0.9), transparent); }
+        .slide-caption { position: absolute; bottom: 30px; left: 30px; z-index: 3; }
+        .slide-caption h3 { font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 5px; }
+        .slider-controls { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
+        .dot { width: 40px; height: 4px; background-color: rgba(255,255,255,0.2); border-radius: 2px; cursor: pointer; border: none; padding: 0; transition: background-color 0.3s ease; }
+        .dot.active { background-color: var(--accent-gold); }
+        .dot:focus-visible, .btn-icon:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
+        .btn-icon { background: transparent; border: none; color: var(--accent-gold); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 5px; transition: color 0.3s ease; }
+        .btn-icon:hover { color: var(--accent-gold-hover); }
+
+        /* Experience Grid Section */
+        .experience-section { padding: 80px 5% 100px; background-color: var(--bg-card); border-top: 1px solid rgba(255,255,255,0.05); }
+        .experience-header { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+        .experience-header h2 { font-size: 2.8rem; margin-bottom: 0; }
+        .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .exp-card { background-color: var(--bg-main); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.02); transition: transform 0.3s ease, border-color 0.3s ease; display: flex; flex-direction: column; }
+        .exp-card:hover { transform: translateY(-8px); border-color: rgba(220, 179, 69, 0.2); }
+        .exp-img { height: 220px; width: 100%; object-fit: cover; }
+        .exp-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+        .exp-content h3 { font-size: 1.8rem; margin-bottom: 15px; }
+        .exp-content p { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; line-height: 1.7; flex-grow: 1; }
+        .exp-content .btn-primary { align-self: flex-start; margin-top: auto; }
+
+        /* Reviews Section */
+        .reviews-section { padding: 100px 5%; background-color: var(--bg-main); }
+        .reviews-header { text-align: center; margin-bottom: 60px; }
+        .reviews-header h2 { font-size: 2.8rem; }
+        .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .review-card { background-color: var(--bg-card); border-radius: 12px; padding: 40px 30px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.02); display: flex; flex-direction: column; z-index: 1; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .review-card:hover { transform: translateY(-10px); border-color: rgba(220, 179, 69, 0.3); }
+        .review-card::before { content: '“'; position: absolute; top: -20px; right: 20px; font-family: var(--font-heading); font-size: 180px; color: rgba(220, 179, 69, 0.05); z-index: -1; line-height: 1; }
+        .review-stars { color: var(--accent-gold); font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .review-text { color: var(--text-main); font-size: 1.05rem; line-height: 1.8; font-style: italic; margin-bottom: 30px; flex-grow: 1; }
+        .review-author { display: flex; align-items: center; gap: 15px; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-gold), #8a6c1c); display: flex; align-items: center; justify-content: center; font-weight: 600; color: #000; font-size: 1.2rem; }
+        .author-info h4 { font-size: 1rem; color: var(--accent-gold); margin: 0; }
+
+        /* Our Location Section */
+        .location-section { padding: 80px 5% 100px; background-color: var(--bg-card); border-top: 1px solid rgba(255,255,255,0.05); }
+        .location-header { text-align: center; margin-bottom: 50px; }
+        .location-header h2 { font-size: 2.8rem; }
+        .location-card { display: flex; background-color: var(--bg-main); border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); max-width: 1200px; margin: 0 auto; }
+        .location-map { flex: 1.2; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80') center/cover; min-height: 400px; position: relative; }
+        .location-info { flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .location-info h3 { font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 5px; }
+        .location-info > p.subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        .info-block h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px; }
+        .info-block p, .info-block a { color: var(--text-main); font-size: 1rem; line-height: 1.6; }
+        .info-block a:hover { color: var(--accent-gold); }
+        .directions-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-gold) !important; font-weight: 600; margin-top: 10px; }
+        .directions-link:hover { text-decoration: underline; }
+        
+        .hours-list { list-style: none; padding: 0; margin: 0; }
+        .hours-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); color: var(--text-muted); font-size: 0.95rem; transition: all 0.3s ease; }
+        .hours-list li:last-child { border-bottom: none; }
+        .hours-list li .day { font-weight: 500; }
+        .hours-list li.today-active { color: var(--accent-gold); font-weight: 600; background-color: rgba(220, 179, 69, 0.05); padding: 8px 10px; border-radius: 4px; border-bottom: 1px dashed transparent; margin: 0 -10px; }
+
+        /* Featuring Section */
+        .featuring-block { max-width: 1200px; margin: 60px auto 0; text-align: center; }
+        .featuring-block h3 { font-size: 1.5rem; margin-bottom: 30px; color: var(--text-main); letter-spacing: 1px; }
+        .featuring-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .featuring-list li { display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--text-muted); width: 110px; transition: color 0.3s ease, transform 0.3s ease; }
+        .featuring-list li:hover { color: var(--accent-gold); transform: translateY(-3px); }
+        .featuring-list li svg { width: 32px; height: 32px; fill: currentColor; }
+        .featuring-list li span { font-size: 0.85rem; font-weight: 500; text-align: center; line-height: 1.2; }
+
+        /* Fancy Visit Us Today Block */
+        .visit-us-container {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 60px 40px;
+            background: linear-gradient(145deg, var(--bg-card), #161310);
+            border-radius: 20px;
+            border: 1px solid rgba(220, 179, 69, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.02);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .visit-us-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 179, 69, 0.05) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .visit-content { position: relative; z-index: 1; }
+        .visit-us-container h3 { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px; font-style: italic; }
+        .fancy-divider { width: 60px; height: 3px; background-color: var(--accent-gold); margin: 0 auto 30px; border: none; border-radius: 2px; }
+        .visit-us-container p { color: var(--text-main); font-size: 1.15rem; line-height: 1.8; max-width: 700px; margin: 0 auto 40px; }
+        .visit-actions { display: flex; gap: 20px; justify-content: center; }
+
+        /* Seamless Custom Footer */
+        footer {
+            background-color: var(--bg-main); /* Matches the main body background perfectly */
+            padding: 80px 5% 40px;
+            border-top: 1px solid rgba(255,255,255,0.05); /* Subtle visual break */
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-muted);
+            transition: fill 0.3s ease;
+        }
+        .social-icons a:hover svg {
+            fill: var(--accent-gold);
+        }
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px; /* Evenly spaced */
+        }
+        .footer-nav a {
+            display: block;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            text-transform: capitalize;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: var(--accent-gold);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-bottom-links a {
+            transition: color 0.3s ease;
+        }
+        .footer-bottom-links a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Subtle SEO Links */
+        .seo-links { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            padding-top: 40px; 
+            justify-content: center; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+        .seo-links a { color: rgba(255,255,255,0.2); font-size: 0.75rem; transition: color 0.3s ease; }
+        .seo-links a:hover { color: var(--text-muted); }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 1000px) {
+            .experience-grid, .review-grid { grid-template-columns: repeat(2, 1fr); }
+            .exp-card:nth-child(3), .review-card:nth-child(3) { grid-column: span 2; }
+            .location-card { flex-direction: column; }
+            .location-map { min-height: 300px; }
+            .footer-nav { gap: 40px; }
+        }
+        @media (max-width: 900px) {
+            .hero, .welcome-split, .sip-section { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-text, .sip-text { padding-right: 0; }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-image { width: 100%; height: 50vh; }
+            .sip-slider-container { flex: none; width: 100%; height: 400px; }
+            .welcome-image { flex: none; width: 100%; }
+            .masonry-grid { column-count: 2; }
+            .nav-links { display: none; }
+            .slider-controls { justify-content: center; }
+            .slide-caption { left: 50%; transform: translateX(-50%); text-align: center; width: 100%; }
+            .featuring-list { gap: 15px; }
+            .featuring-list li { width: 90px; }
+            
+            /* Footer specific mobile */
+            .footer-top { flex-direction: column; align-items: center; text-align: center; }
+            .footer-nav { grid-template-columns: repeat(2, 1fr); text-align: center; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .masonry-grid { column-count: 1; }
+            .experience-grid, .review-grid { grid-template-columns: 1fr; }
+            .exp-card:nth-child(3), .review-card:nth-child(3) { grid-column: auto; }
+            .info-grid { grid-template-columns: 1fr; gap: 20px; }
+            .location-info { padding: 30px 20px; }
+            .featuring-list { justify-content: space-around; }
+            .visit-actions { flex-direction: column; gap: 15px; }
+            .visit-us-container { padding: 40px 20px; }
+            .footer-nav { grid-template-columns: 1fr; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">ENTHAICE</div>
+        <nav class="nav-links">
+            <a href="/menu">Menu</a>
+            <a href="/page/reservation">Reservations</a>
+            <a href="/page/catering">Catering & Events</a>
+            <a href="/story">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="#" style="font-weight: 500;">Sign In</a>
+            <a href="#" class="btn-primary">Order Online</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <p class="seo-tag">Best Thai Food in Astoria</p>
+            <h1>Bold flavors.<br>No compromises.</h1>
+            <p class="subtitle">We bring the depth of Chiang Mai cooking—with a touch of Phayao—right to your table in Astoria, Queens.</p>
+            <a href="/menu" class="btn-primary">Explore The Menu</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <section class="section">
+        <div class="welcome-split">
+            <div class="welcome-image">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80" alt="Enthaice Thai Kitchen Atmosphere">
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome to Enthaice Thai Kitchen</h2>
+                <p>Located on 31st Avenue, Enthaice Thai Kitchen brings bold Northern Thai cooking to the heart of Astoria. With a cozy space, warm energy, and a menu full of rich flavors, we invite you to experience Thai food with edge, heart, and character.</p>
+                <a href="/story" class="btn-primary" style="margin-top: 15px;">Read Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="crafted-section">
+        <div class="crafted-header">
+            <h2>Crafted for the Curious</h2>
+            <p>From bold sauces to slow-built spice, every plate brings attitude and intention. The colors pop, the heat builds just right, and textures shift from crisp to rich in a single bite. It's a full experience—elevated, unforgettable, and never playing it safe.</p>
+            <a href="/menu" class="btn-primary">View Full Menu</a>
+        </div>
+        
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&q=80&w=400&h=600" alt="Thai Dish Vertical"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&q=80&w=400&h=400" alt="Thai Dish Square"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1626804475297-4160aae6fc8a?auto=format&fit=crop&q=80&w=400&h=500" alt="Thai Dish Medium Vertical"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1562565652-a6e87f620546?auto=format&fit=crop&q=80&w=400&h=700" alt="Thai Dish Tall"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400&h=450" alt="Thai Appetizer"></div>
+            <div class="masonry-item"><img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4859?auto=format&fit=crop&q=80&w=400&h=550" alt="Thai Soup"></div>
+        </div>
+    </section>
+
+    <section class="sip-section">
+        <div class="sip-text">
+            <h2>Sip Something Special</h2>
+            <p>Our beverage program is designed with the same edge and character as our kitchen. <strong>To keep things fresh and exciting, our signature cocktail menu rotates frequently.</strong> Every cocktail and refreshment is thoughtfully paired to match the complexity of Northern Thai spices. Refreshing, vibrant, and crafted to elevate your dining experience.</p>
+            
+            <div class="slider-controls" role="group" aria-label="Slider controls">
+                <button class="btn-icon" id="playPauseBtn" aria-label="Pause slider" onclick="togglePlayPause()">⏸</button>
+                <button class="dot active" aria-label="Go to slide 1" onclick="setSlide(0)"></button>
+                <button class="dot" aria-label="Go to slide 2" onclick="setSlide(1)"></button>
+                <button class="dot" aria-label="Go to slide 3" onclick="setSlide(2)"></button>
+            </div>
+        </div>
+        
+        <div class="sip-slider-container" aria-live="polite">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&q=80" alt="Thai Spice Cocktail">
+                <div class="slide-caption"><h3>Thai Spice Cocktail</h3></div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80" alt="Lychee Bliss">
+                <div class="slide-caption"><h3>Lychee Bliss</h3></div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80" alt="Lemongrass Cooler">
+                <div class="slide-caption"><h3>Lemongrass Cooler</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-section">
+        <div class="experience-header">
+            <h2>More Than Just a Meal</h2>
+        </div>
+        <div class="experience-grid">
+            
+            <div class="exp-card">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80" alt="Restaurant Table Setting" class="exp-img">
+                <div class="exp-content">
+                    <h3>Got Plans Tonight?</h3>
+                    <p>Looking for bold flavors and a spot worth sitting down for? Reserve your table now and we'll make sure there's a seat waiting—no guesswork, no wait, just good food and the right vibe.</p>
+                    <a href="/page/reservation" class="btn-primary">Reserve Your Spot</a>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80" alt="Catering Spread" class="exp-img">
+                <div class="exp-content">
+                    <h3>Catering Without the Boring</h3>
+                    <p>Let Enthaice Thai Kitchen handle the bold flavors while you handle the guest list. Whether it's a team lunch, a private event, or something in between, our catering brings serious energy to the table—fresh, packed with flavor, and ready when you are.</p>
+                    <a href="/page/catering" class="btn-primary">Let's Feed the Crowd</a>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="Friends Dining Together" class="exp-img">
+                <div class="exp-content">
+                    <h3>A Place For Everyone</h3>
+                    <p>Enjoy a space that's built for all kinds of moments—outdoor seating for open-air meals, vegetarian options full of bold flavor, high chairs for the little ones, and a dine-in experience that keeps things easy and welcoming. There's always room here.</p>
+                    <a href="/page/qa" class="btn-primary">View FAQs & Info</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h2>What our guests are saying</h2>
+        </div>
+        <div class="review-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"One of the best Thai restaurants on my list is a place I've been visiting for over a decade. Every time I go, the food tastes better and better. The flavors are amazing, and I always leave satisfied..."</p>
+                <div class="review-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info"><h4>Matt J.</h4></div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Enthaice Thai Kitchen is so, so awesome!! I visited for the first time this weekend with friends while in Astoria, and I'm so happy we came to this spot. For cocktails, I highly recommend their Thai Spice."</p>
+                <div class="review-author">
+                    <div class="author-avatar">K</div>
+                    <div class="author-info"><h4>Kristen L.</h4></div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"This is my go-to Thai restaurant in Astoria! Friendly and attentive staff with a casual but elevated vibe. The classic Thai staples are very good, but there other duck and fish dishes are also worth trying!"</p>
+                <div class="review-author">
+                    <div class="author-avatar">S</div>
+                    <div class="author-info"><h4>Steven S.</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section">
+        <div class="location-header">
+            <h2>Our Location</h2>
+        </div>
+        
+        <div class="location-card">
+            <div class="location-map"></div>
+            
+            <div class="location-info">
+                <h3>Enthaice Thai Kitchen</h3>
+                <p class="subtitle">Astoria, NY</p>
+                
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h4>Address</h4>
+                        <p>33-20 31st Ave<br>Astoria, NY 11106</p>
+                        <a href="#" class="directions-link">Get Directions &rarr;</a>
+                    </div>
+                    <div class="info-block">
+                        <h4>Contact</h4>
+                        <p><a href="tel:7189321118">(718) 932-1118</a></p>
+                        <p><a href="mailto:mahapochanahphan@gmail.com" style="font-size: 0.9rem;">mahapochanahphan@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-block" style="margin-bottom: 20px;">
+                    <h4>Business Hours</h4>
+                </div>
+                
+                <ul class="hours-list" id="dynamicHoursList">
+                    <li data-day="Sunday"><span class="day">Sunday</span> <span class="time">12:00 PM - 9:30 PM</span></li>
+                    <li data-day="Monday"><span class="day">Monday</span> <span class="time">12:00 PM - 9:30 PM</span></li>
+                    <li data-day="Tuesday"><span class="day">Tuesday</span> <span class="time">12:00 PM - 9:30 PM</span></li>
+                    <li data-day="Wednesday"><span class="day">Wednesday</span> <span class="time">12:00 PM - 9:30 PM</span></li>
+                    <li data-day="Thursday"><span class="day">Thursday</span> <span class="time">12:00 PM - 9:30 PM</span></li>
+                    <li data-day="Friday"><span class="day">Friday</span> <span class="time">12:00 PM - 10:30 PM</span></li>
+                    <li data-day="Saturday"><span class="day">Saturday</span> <span class="time">12:00 PM - 10:30 PM</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="featuring-block">
+            <h3>Featuring</h3>
+            <ul class="featuring-list" aria-label="Restaurant amenities">
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <span>Delivery</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 6h-4.18C14.4 4.84 13.3 4 12 4c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-1c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+                    <span>Takeout</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                    <span>Curbside Pickup</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M18 3H6C4.9 3 4 3.9 4 5v14c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 12c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+                    <span>Catering</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+                    <span>Dine In</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                    <span>Reservations</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M21 15h-2v-2h-3v2h-2v2h2v3h3v-3h2zm-9-2H4v-2h8v2zm0 4H4v-2h8v2z"/></svg>
+                    <span>Outdoor Seating</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66l.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
+                    <span>Vegetarian Options</span>
+                </li>
+                <li>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20 10V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L4 19h1l.67-2h12.67l.66 2h1l.67-2H22v-5c0-1.1-.9-2-2-2zm-9 3H7v-3h4v3zm5 0h-4v-3h4v3z"/></svg>
+                    <span>High Chairs</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="visit-us-container">
+            <div class="visit-content">
+                <h3>Visit Us Today 🍽️</h3>
+                <hr class="fancy-divider">
+                <p>We're here all week, ready to serve bold Thai flavors with zero fuss and full energy. Join us any day—walk in, grab a seat, and let the food do the talking. Drop by when it works for you—we'll be ready.</p>
+                <div class="visit-actions">
+                    <a href="/page/reservation" class="btn-primary">Book a Table</a>
+                    <a href="/page/contact-us" class="btn-secondary">Get Directions</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                
+                <div class="footer-brand">
+                    <div class="footer-logo">ENTHAICE THAI KITCHEN</div>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <div>
+                        <a href="/">Home</a>
+                        <a href="/page/reservation">Reservation</a>
+                        <a href="/story">Our Story</a>
+                    </div>
+                    <div>
+                        <a href="/menu">Menu</a>
+                        <a href="/page/catering">Catering</a>
+                        <a href="/events">Events</a>
+                    </div>
+                    <div>
+                        <a href="/gift-cards">Gift Cards</a>
+                        <a href="/page/qa">Q&A</a>
+                        <a href="/page/contact-us">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/accessibility">Accessibility</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    &copy; 2026 MAHAPOCHANAHPHAN, INC.. All rights reserved.
+                </div>
+            </div>
+            
+            <div class="seo-links">
+                <a href="/tags/takeout">Takeout in Astoria</a>
+                <a href="/tags/delivery">Delivery in Astoria</a>
+                <a href="/places/new-york">Thai Food New York</a>
+                <a href="/places/long-island-city">Thai Food Long Island City</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sip Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const totalSlides = slides.length;
+        let slideInterval;
+        let isPlaying = true;
+
+        function updateSlider() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function setSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            if (isPlaying) resetInterval();
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                clearInterval(slideInterval);
+                playPauseBtn.innerHTML = '▶'; 
+                playPauseBtn.setAttribute('aria-label', 'Play slider');
+                isPlaying = false;
+            } else {
+                startInterval();
+                playPauseBtn.innerHTML = '⏸'; 
+                playPauseBtn.setAttribute('aria-label', 'Pause slider');
+                isPlaying = true;
+            }
+        }
+        startInterval();
+
+        // Dynamic Store Hours Logic (New York Timezone)
+        function highlightTodayHours() {
+            const options = { timeZone: 'America/New_York', weekday: 'long' };
+            const todayStr = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            
+            const days = document.querySelectorAll('#dynamicHoursList li');
+            
+            days.forEach(dayElement => {
+                if (dayElement.getAttribute('data-day') === todayStr) {
+                    dayElement.classList.add('today-active');
+                    const daySpan = dayElement.querySelector('.day');
+                    daySpan.innerHTML += ' <em>(Today)</em>';
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', highlightTodayHours);
+    </script>
+</body>
+</html>
