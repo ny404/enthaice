@@ -43,17 +43,19 @@
         /* Skip to content link */
         .skip-link {
             position: absolute;
-            top: -40px;
+            top: 0;
             left: 0;
+            transform: translateY(-100%);
             background: var(--accent-gold);
             color: #000;
-            padding: 8px;
-            z-index: 1000;
-            transition: top 0.2s ease;
+            padding: 12px 24px;
+            z-index: 2000;
+            transition: transform 0.3s ease;
             font-weight: 600;
+            border-bottom-right-radius: 4px;
         }
         .skip-link:focus {
-            top: 0;
+            transform: translateY(0);
         }
 
         /* Gold Primary Buttons */
@@ -93,22 +95,49 @@
             transform: translateY(-2px);
         }
 
-        /* Transparent Navigation */
+        /* Sticky Navigation */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 25px 5%;
             background-color: transparent;
-            position: absolute; 
+            position: fixed; /* Changed to fixed for sticky behavior */
+            top: 0;
+            left: 0;
             width: 100%;
-            z-index: 100;
+            z-index: 1000;
+            transition: background-color 0.4s ease, padding 0.4s ease, transform 0.4s ease;
         }
+        
+        /* Dynamic Header Classes applied via JS */
+        header.scrolled {
+            background-color: rgba(18, 16, 14, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        header.header-hidden {
+            transform: translateY(-100%);
+            pointer-events: none; /* Prevents invisible clicking */
+        }
+
         .logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-gold); font-weight: 700; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 40px; }
+        
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
         .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
         .nav-links a:hover { color: var(--accent-gold); }
-        .nav-actions { display: flex; align-items: center; gap: 20px; }
 
         /* Split Asymmetrical Hero */
         .hero {
@@ -163,6 +192,7 @@
         .slider-controls { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
         .dot { width: 40px; height: 4px; background-color: rgba(255,255,255,0.2); border-radius: 2px; cursor: pointer; border: none; padding: 0; transition: background-color 0.3s ease; }
         .dot.active { background-color: var(--accent-gold); }
+        .dot:focus-visible, .btn-icon:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
         .btn-icon { background: transparent; border: none; color: var(--accent-gold); font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 5px; transition: color 0.3s ease; }
         .btn-icon:hover { color: var(--accent-gold-hover); }
 
@@ -260,90 +290,21 @@
             padding: 80px 5% 40px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .footer-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            font-weight: 700;
-        }
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-        .social-icons a svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-muted);
-            transition: fill 0.3s ease;
-        }
-        .social-icons a:hover svg {
-            fill: var(--accent-gold);
-        }
-        .footer-nav {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px; 
-        }
-        .footer-nav a {
-            display: block;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            text-transform: capitalize;
-            transition: color 0.3s ease;
-        }
-        .footer-nav a:hover {
-            color: var(--accent-gold);
-        }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 25px;
-            flex-wrap: wrap;
-            gap: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-        .footer-bottom-links a {
-            transition: color 0.3s ease;
-        }
-        .footer-bottom-links a:hover {
-            color: var(--accent-gold);
-        }
-        
-        /* Subtle SEO Links */
-        .seo-links { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 20px; 
-            padding-top: 40px; 
-            justify-content: center; 
-            max-width: 1200px; 
-            margin: 0 auto;
-        }
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+        .footer-logo { font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a svg { width: 20px; height: 20px; fill: var(--text-muted); transition: fill 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-gold); }
+        .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+        .footer-nav a { display: block; color: var(--text-main); margin-bottom: 12px; font-size: 0.95rem; text-transform: capitalize; transition: color 0.3s ease; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; flex-wrap: wrap; gap: 20px; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a { transition: color 0.3s ease; }
+        .footer-bottom-links a:hover { color: var(--accent-gold); }
+        .seo-links { display: flex; flex-wrap: wrap; gap: 20px; padding-top: 40px; justify-content: center; max-width: 1200px; margin: 0 auto; }
         .seo-links a { color: rgba(255,255,255,0.2); font-size: 0.75rem; transition: color 0.3s ease; }
         .seo-links a:hover { color: var(--text-muted); }
 
@@ -363,12 +324,15 @@
             .sip-slider-container { flex: none; width: 100%; height: 400px; }
             .welcome-image { flex: none; width: 100%; }
             .masonry-grid { column-count: 2; }
+            
+            /* Mobile Navigation Update: Hide links, keep button visible */
             .nav-links { display: none; }
+            .main-nav { gap: 15px; }
+
             .slider-controls { justify-content: center; }
             .slide-caption { left: 50%; transform: translateX(-50%); text-align: center; width: 100%; }
             .featuring-list { gap: 15px; }
             .featuring-list li { width: 90px; }
-            
             .footer-top { flex-direction: column; align-items: center; text-align: center; }
             .footer-nav { grid-template-columns: repeat(2, 1fr); text-align: center; gap: 30px; }
             .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
@@ -391,18 +355,18 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
+    <header id="site-header">
         <div class="logo" aria-label="Enthaice Thai Kitchen">ENTHAICE</div>
-        <nav aria-label="Main navigation" class="nav-links">
-            <a href="/menu">Menu</a>
-            <a href="/page/reservation">Reservations</a>
-            <a href="/page/catering">Catering & Events</a>
-            <a href="/story">About Us</a>
-        </nav>
-        <div class="nav-actions">
-            <a href="#" style="font-weight: 500;">Sign In</a>
+        
+        <nav aria-label="Main navigation" class="main-nav">
+            <ul class="nav-links">
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/page/reservation">Reservations</a></li>
+                <li><a href="/page/catering">Catering & Events</a></li>
+                <li><a href="/story">About Us</a></li>
+            </ul>
             <a href="/menu" class="btn-primary">Order Online</a>
-        </div>
+        </nav>
     </header>
 
     <main id="main-content">
@@ -700,6 +664,30 @@
     </footer>
 
     <script>
+        // Sticky Header Logic
+        const header = document.getElementById('site-header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const pageHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+            const distanceToBottom = pageHeight - (scrollY + windowHeight);
+
+            // Add background when scrolled past 50px
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Hide header if within 600px of the bottom (near footer)
+            if (distanceToBottom < 600) {
+                header.classList.add('header-hidden');
+            } else {
+                header.classList.remove('header-hidden');
+            }
+        });
+
         // Sip Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
