@@ -796,7 +796,7 @@
                             <div class="info-block">
                                 <h4>Contact</h4>
                                 <p><a href="tel:7189321118">(718) 932-1118</a></p>
-                                <p><a href="mailto:mahapochanahphan@gmail.com" style="font-size: 0.9rem;">mahapochanahphan@gmail.com</a></p>
+                                <p><a href="mailto:contact.enthaicethaikitchen@gmail.com" style="font-size: 0.9rem;">contact.enthaicethaikitchen@gmail.com</a></p>
                             </div>
                         </div>
                         
@@ -915,7 +915,7 @@
                 </div>
                 
                 <div class="footer-copyright">
-                    © 2026 MAHAPOCHANAHPHAN, INC.. All rights reserved.
+                    &copy; 2013 - <span id="currentYear"></span> Enthaice Thai Kitchen. All rights reserved.
                 </div>
             </div>
         </div>
@@ -926,6 +926,9 @@
     </div>
 
     <script>
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Hamburger Menu Logic
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
