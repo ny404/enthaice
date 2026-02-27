@@ -83,6 +83,19 @@
             --focus-outline: 2px solid var(--accent-gold);
         }
 
+        /* Accessibility: Screen Reader Only Text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-body); background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; color: var(--text-main); }
@@ -212,7 +225,10 @@
         .icon-veg { color: #2a9d8f; font-weight: bold; }
         .icon-gf { color: var(--accent-gold); font-size: 0.75rem; font-weight: 700; border: 1px solid var(--accent-gold); padding: 0 4px; border-radius: 3px; display: flex; align-items: center;}
 
-        .item-price { font-family: var(--font-body); font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; padding-left: 15px; }
+        /* Smooth fade-in for dynamic prices */
+        .item-price { font-family: var(--font-body); font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; padding-left: 15px; opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .item-price.loaded { opacity: 1; }
+        
         .item-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
         /* Footer */
@@ -338,10 +354,10 @@
             
             <section id="panel-snacks" class="tab-panel active" role="tabpanel" aria-labelledby="tab-snacks">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
 
                     <div class="editorial-split">
                         <div class="editorial-image">
@@ -360,9 +376,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Crispy Spring Rolls</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian</span>
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$9.00</span>
+                                <span class="item-price" data-item-id="crispy-spring-rolls"></span>
                             </div>
                             <p class="item-desc">Glass noodles, cabbage, taro, and carrot served with sweet plum sauce.</p>
                         </article>
@@ -371,9 +390,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Chiang Mai Sausage</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$12.00</span>
+                                <span class="item-price" data-item-id="chiang-mai-sausage"></span>
                             </div>
                             <p class="item-desc">Northern Thai style grilled pork sausage mixed with traditional spices and fresh herbs.</p>
                         </article>
@@ -381,7 +403,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Chicken Curry Puffs</h3></div>
-                                <span class="item-price">$10.00</span>
+                                <span class="item-price" data-item-id="chicken-curry-puffs"></span>
                             </div>
                             <p class="item-desc">Minced chicken, potatoes, and onions cooked with curry powder, served with cucumber relish.</p>
                         </article>
@@ -391,7 +413,7 @@
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Fried Calamari</h3>
                                 </div>
-                                <span class="item-price">$12.00</span>
+                                <span class="item-price" data-item-id="fried-calamari"></span>
                             </div>
                             <p class="item-desc">Crispy fried calamari served with sweet chili sauce.</p>
                         </article>
@@ -401,10 +423,10 @@
 
             <section id="panel-soup" class="tab-panel" role="tabpanel" aria-labelledby="tab-soup">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-02.jpg" alt="Tom Yum Soup"></div>
@@ -420,9 +442,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Tom Yum</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$8.00</span>
+                                <span class="item-price" data-item-id="tom-yum"></span>
                             </div>
                             <p class="item-desc">Spicy and sour soup with mushrooms, lemongrass, galangal, and lime leaves.</p>
                         </article>
@@ -432,7 +457,7 @@
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Tom Kha</h3>
                                 </div>
-                                <span class="item-price">$8.50</span>
+                                <span class="item-price" data-item-id="tom-kha"></span>
                             </div>
                             <p class="item-desc">Coconut milk soup with galangal, kaffir lime leaves, mushrooms, and lime juice.</p>
                         </article>
@@ -441,9 +466,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Clear Soup</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian</span>
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$7.00</span>
+                                <span class="item-price" data-item-id="clear-soup"></span>
                             </div>
                             <p class="item-desc">Mixed vegetables and glass noodles in a clear, comforting vegetable broth.</p>
                         </article>
@@ -453,10 +481,10 @@
 
             <section id="panel-salad" class="tab-panel" role="tabpanel" aria-labelledby="tab-salad">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Papaya Salad"></div>
@@ -472,9 +500,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Papaya Salad</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$14.00</span>
+                                <span class="item-price" data-item-id="papaya-salad"></span>
                             </div>
                             <p class="item-desc">Shredded green papaya, tomatoes, string beans, and peanuts in a spicy lime dressing.</p>
                         </article>
@@ -483,9 +514,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Larb Gai</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$15.00</span>
+                                <span class="item-price" data-item-id="larb-gai"></span>
                             </div>
                             <p class="item-desc">Minced chicken tossed with mint, scallions, cilantro, roasted rice powder, and lime dressing.</p>
                         </article>
@@ -494,9 +528,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Mango Salad</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian</span>
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$14.00</span>
+                                <span class="item-price" data-item-id="mango-salad"></span>
                             </div>
                             <p class="item-desc">Shredded green mango with red onions, cashews, and a sweet and sour lime dressing.</p>
                         </article>
@@ -506,10 +543,10 @@
 
             <section id="panel-chef" class="tab-panel" role="tabpanel" aria-labelledby="tab-chef">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/home/Khao Soi Chiang Mai.jpeg" alt="Khao Soi"></div>
@@ -525,9 +562,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Khao Soi</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$19.00</span>
+                                <span class="item-price" data-item-id="khao-soi"></span>
                             </div>
                             <p class="item-desc">Northern style egg noodle curry topped with crispy noodles, pickled mustard greens, and shallots.</p>
                         </article>
@@ -535,7 +575,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Crispy Half Duck Tamarind</h3></div>
-                                <span class="item-price">$28.00</span>
+                                <span class="item-price" data-item-id="crispy-half-duck-tamarind"></span>
                             </div>
                             <p class="item-desc">Crispy roasted half duck topped with a rich, sweet and sour tamarind glaze and mixed vegetables.</p>
                         </article>
@@ -543,7 +583,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Crab Meat Fried Rice</h3></div>
-                                <span class="item-price">$22.00</span>
+                                <span class="item-price" data-item-id="crab-meat-fried-rice"></span>
                             </div>
                             <p class="item-desc">Classic fried rice with generous lumps of premium crab meat, egg, and scallions.</p>
                         </article>
@@ -553,10 +593,10 @@
 
             <section id="panel-fish" class="tab-panel" role="tabpanel" aria-labelledby="tab-fish">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-06.jpg" alt="Mango Fish"></div>
@@ -572,9 +612,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Mango Fish</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$32.00</span>
+                                <span class="item-price" data-item-id="mango-fish"></span>
                             </div>
                             <p class="item-desc">Crispy whole red snapper or fillet topped with shredded green mango, red onions, and cashews in a lime dressing.</p>
                         </article>
@@ -582,7 +625,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Steamed Branzino</h3></div>
-                                <span class="item-price">$32.00</span>
+                                <span class="item-price" data-item-id="steamed-branzino"></span>
                             </div>
                             <p class="item-desc">Steamed whole branzino with fresh ginger, scallions, and shiitake mushrooms in a light soy broth.</p>
                         </article>
@@ -590,7 +633,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Crispy Sweet Chili Fish</h3></div>
-                                <span class="item-price">$32.00</span>
+                                <span class="item-price" data-item-id="crispy-sweet-chili-fish"></span>
                             </div>
                             <p class="item-desc">Deep-fried whole snapper topped with our signature three-flavor sweet chili sauce.</p>
                         </article>
@@ -600,10 +643,10 @@
 
             <section id="panel-seafood" class="tab-panel" role="tabpanel" aria-labelledby="tab-seafood">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Pad Cha Seafood"></div>
@@ -619,9 +662,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Pad Cha Seafood</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$26.00</span>
+                                <span class="item-price" data-item-id="pad-cha-seafood"></span>
                             </div>
                             <p class="item-desc">Sautéed mixed seafood with fresh herbs, wild ginger (krachai), peppercorns, and basil in a spicy sauce.</p>
                         </article>
@@ -629,7 +675,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Garlic Pepper Seafood</h3></div>
-                                <span class="item-price">$25.00</span>
+                                <span class="item-price" data-item-id="garlic-pepper-seafood"></span>
                             </div>
                             <p class="item-desc">Shrimp, scallops, and squid sautéed with fresh garlic and black pepper, served over steamed vegetables.</p>
                         </article>
@@ -639,10 +685,10 @@
 
             <section id="panel-meat" class="tab-panel" role="tabpanel" aria-labelledby="tab-meat">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Meat Selections"></div>
@@ -657,7 +703,7 @@
                         <article class="menu-item highlight-box">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Gai Pad Med Mamuang</h3></div>
-                                <span class="item-price">$18.00</span>
+                                <span class="item-price" data-item-id="gai-pad-med-mamuang"></span>
                             </div>
                             <p class="item-desc">Crispy chicken sautéed with roasted cashew nuts, onions, scallions, and bell peppers in a sweet chili paste.</p>
                         </article>
@@ -666,9 +712,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Moo Pad Prik Khing</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$18.00</span>
+                                <span class="item-price" data-item-id="moo-pad-prik-khing"></span>
                             </div>
                             <p class="item-desc">Sautéed pork with string beans and kaffir lime leaves in a fragrant red curry paste.</p>
                         </article>
@@ -678,10 +727,10 @@
 
             <section id="panel-veg" class="tab-panel" role="tabpanel" aria-labelledby="tab-veg">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Vegetable Dishes"></div>
@@ -697,12 +746,13 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Eggplant Basil</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian, Spicy">
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian, Spicy</span>
                                         <span class="icon-veg" aria-hidden="true">🌱</span>
                                         <span class="icon-spice" aria-hidden="true">🌶️</span>
                                     </div>
                                 </div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="eggplant-basil"></span>
                             </div>
                             <p class="item-desc">Sautéed Asian eggplant with fresh basil, chili, bell peppers, and garlic sauce.</p>
                         </article>
@@ -711,9 +761,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Mixed Veggies Garlic</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian</span>
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="mixed-veggies-garlic"></span>
                             </div>
                             <p class="item-desc">A seasonal assortment of fresh vegetables lightly sautéed in a savory brown garlic sauce.</p>
                         </article>
@@ -723,10 +776,10 @@
 
             <section id="panel-noodle-soup" class="tab-panel" role="tabpanel" aria-labelledby="tab-noodle-soup">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-02.jpg" alt="Duck Noodle Soup"></div>
@@ -741,7 +794,7 @@
                         <article class="menu-item highlight-box">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Duck Noodle Soup</h3></div>
-                                <span class="item-price">$18.00</span>
+                                <span class="item-price" data-item-id="duck-noodle-soup"></span>
                             </div>
                             <p class="item-desc">Roasted duck in a deeply spiced cinnamon and star anise broth with thin rice noodles and bean sprouts.</p>
                         </article>
@@ -749,7 +802,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Beef Noodle Soup</h3></div>
-                                <span class="item-price">$17.00</span>
+                                <span class="item-price" data-item-id="beef-noodle-soup"></span>
                             </div>
                             <p class="item-desc">Slow-braised beef chunks in a rich, dark broth with thin rice noodles, celery, and fried garlic.</p>
                         </article>
@@ -759,10 +812,10 @@
 
             <section id="panel-noodle" class="tab-panel" role="tabpanel" aria-labelledby="tab-noodle">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Pad Thai Noodles"></div>
@@ -777,7 +830,7 @@
                         <article class="menu-item highlight-box">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Pad Thai</h3></div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="pad-thai"></span>
                             </div>
                             <p class="item-desc">Thin rice noodles sautéed with egg, peanuts, bean sprouts, and scallions in a tamarind sauce.</p>
                         </article>
@@ -786,9 +839,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Pad Kee Mao (Drunken Noodles)</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="pad-kee-mao"></span>
                             </div>
                             <p class="item-desc">Broad flat rice noodles sautéed with egg, chili, bell peppers, onions, and fresh basil.</p>
                         </article>
@@ -796,7 +852,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Pad See Ew</h3></div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="pad-see-ew"></span>
                             </div>
                             <p class="item-desc">Broad flat rice noodles sautéed with egg and Chinese broccoli in a sweet dark soy sauce.</p>
                         </article>
@@ -806,10 +862,10 @@
 
             <section id="panel-sauteed" class="tab-panel" role="tabpanel" aria-labelledby="tab-sauteed">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Kra Pao Basil"></div>
@@ -825,9 +881,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Kra Pao (Basil Sauce)</h3>
-                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="kra-pao"></span>
                             </div>
                             <p class="item-desc">A classic Thai stir-fry with fresh holy basil, onions, bell peppers, and fiery bird's eye chili.</p>
                         </article>
@@ -835,7 +894,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Pad Kratiem (Garlic Sauce)</h3></div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="pad-kratiem"></span>
                             </div>
                             <p class="item-desc">A savory and slightly sweet garlic and black pepper sauce, served over a bed of steamed vegetables.</p>
                         </article>
@@ -845,10 +904,10 @@
 
             <section id="panel-curry" class="tab-panel" role="tabpanel" aria-labelledby="tab-curry">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/home/Khao Soi Chiang Mai.jpeg" alt="Thai Curry"></div>
@@ -864,12 +923,13 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Green Curry</h3>
-                                    <div class="dietary-icons" aria-label="Spicy, Gluten-Free">
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Spicy, Gluten-Free</span>
                                         <span class="icon-spice" aria-hidden="true">🌶️</span>
                                         <span class="icon-gf" aria-hidden="true">GF</span>
                                     </div>
                                 </div>
-                                <span class="item-price">$17.00</span>
+                                <span class="item-price" data-item-id="green-curry"></span>
                             </div>
                             <p class="item-desc">Spicy green curry paste in coconut milk with bamboo shoots, eggplant, bell peppers, and basil.</p>
                         </article>
@@ -878,9 +938,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Massaman Curry</h3>
-                                    <div class="dietary-icons" aria-label="Gluten-Free"><span class="icon-gf" aria-hidden="true">GF</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Gluten-Free</span>
+                                        <span class="icon-gf" aria-hidden="true">GF</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$17.00</span>
+                                <span class="item-price" data-item-id="massaman-curry"></span>
                             </div>
                             <p class="item-desc">A mild, rich curry with potatoes, onions, and roasted peanuts in a warmly spiced coconut broth.</p>
                         </article>
@@ -889,9 +952,12 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Panang Curry</h3>
-                                    <div class="dietary-icons" aria-label="Gluten-Free"><span class="icon-gf" aria-hidden="true">GF</span></div>
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Gluten-Free</span>
+                                        <span class="icon-gf" aria-hidden="true">GF</span>
+                                    </div>
                                 </div>
-                                <span class="item-price">$17.00</span>
+                                <span class="item-price" data-item-id="panang-curry"></span>
                             </div>
                             <p class="item-desc">A slightly sweet and thick red curry with string beans, bell peppers, and shredded kaffir lime leaves.</p>
                         </article>
@@ -901,10 +967,10 @@
 
             <section id="panel-rice" class="tab-panel" role="tabpanel" aria-labelledby="tab-rice">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-crafted-highlight-04.jpg" alt="Crab Fried Rice"></div>
@@ -919,7 +985,7 @@
                         <article class="menu-item highlight-box">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Pineapple Fried Rice</h3></div>
-                                <span class="item-price">$17.00</span>
+                                <span class="item-price" data-item-id="pineapple-fried-rice"></span>
                             </div>
                             <p class="item-desc">Sweet and savory fried rice with chunks of pineapple, roasted cashews, egg, and curry powder.</p>
                         </article>
@@ -927,7 +993,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Thai Fried Rice</h3></div>
-                                <span class="item-price">$16.00</span>
+                                <span class="item-price" data-item-id="thai-fried-rice"></span>
                             </div>
                             <p class="item-desc">Traditional fried rice with egg, tomatoes, onions, and Chinese broccoli in a light soy seasoning.</p>
                         </article>
@@ -937,10 +1003,10 @@
 
             <section id="panel-sides" class="tab-panel" role="tabpanel" aria-labelledby="tab-sides">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <h2 style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 40px; text-align: center;">Side Orders</h2>
                     
@@ -948,42 +1014,42 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Jasmine Rice</h3></div>
-                                <span class="item-price">$3.00</span>
+                                <span class="item-price" data-item-id="jasmine-rice"></span>
                             </div>
                         </article>
                         
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Sticky Rice</h3></div>
-                                <span class="item-price">$4.00</span>
+                                <span class="item-price" data-item-id="sticky-rice"></span>
                             </div>
                         </article>
 
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Brown Rice</h3></div>
-                                <span class="item-price">$4.00</span>
+                                <span class="item-price" data-item-id="brown-rice"></span>
                             </div>
                         </article>
 
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Steamed Noodles</h3></div>
-                                <span class="item-price">$4.00</span>
+                                <span class="item-price" data-item-id="steamed-noodles"></span>
                             </div>
                         </article>
 
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Steamed Mixed Vegetables</h3></div>
-                                <span class="item-price">$7.00</span>
+                                <span class="item-price" data-item-id="steamed-mixed-vegetables"></span>
                             </div>
                         </article>
 
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Peanut Sauce</h3></div>
-                                <span class="item-price">$3.00</span>
+                                <span class="item-price" data-item-id="peanut-sauce"></span>
                             </div>
                         </article>
                     </div>
@@ -992,10 +1058,10 @@
 
             <section id="panel-dessert" class="tab-panel" role="tabpanel" aria-labelledby="tab-dessert">
                 <div class="menu-frame">
-                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
-                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                     
                     <div class="editorial-split">
                         <div class="editorial-image"><img src="images/enthaice-sip-02.jpg" alt="Thai Dessert"></div>
@@ -1011,12 +1077,13 @@
                             <div class="item-header">
                                 <div class="item-title-wrap">
                                     <h3 class="item-name">Mango Sticky Rice</h3>
-                                    <div class="dietary-icons" aria-label="Vegetarian, Gluten-Free">
+                                    <div class="dietary-icons">
+                                        <span class="sr-only">Dietary Info: Vegetarian, Gluten-Free</span>
                                         <span class="icon-veg" aria-hidden="true">🌱</span>
                                         <span class="icon-gf" aria-hidden="true">GF</span>
                                     </div>
                                 </div>
-                                <span class="item-price">$10.00</span>
+                                <span class="item-price" data-item-id="mango-sticky-rice"></span>
                             </div>
                             <p class="item-desc">Sweet, ripe mango served over warm coconut sticky rice, topped with toasted sesame seeds.</p>
                         </article>
@@ -1024,7 +1091,7 @@
                         <article class="menu-item">
                             <div class="item-header">
                                 <div class="item-title-wrap"><h3 class="item-name">Fried Banana with Ice Cream</h3></div>
-                                <span class="item-price">$9.00</span>
+                                <span class="item-price" data-item-id="fried-banana-ice-cream"></span>
                             </div>
                             <p class="item-desc">Crispy fried banana rolls served warm alongside a scoop of vanilla ice cream.</p>
                         </article>
@@ -1150,19 +1217,12 @@
                 targetPanel.classList.add('active');
                 
                 // Smart scroll back to the top of the menu content
-                // Use setTimeout to ensure DOM has updated panel heights before calculating scroll
                 setTimeout(() => {
                     const headerHeight = headerElement.offsetHeight;
                     const ribbonHeight = ribbonContainer.offsetHeight;
-                    
-                    // Calculate exact absolute position of the content container
                     const contentAbsoluteTop = menuContent.getBoundingClientRect().top + window.scrollY;
-                    
-                    // Target position (content top minus sticky elements)
-                    // We subtract an extra 10px so the border of the frame has breathing room
                     const scrollTarget = contentAbsoluteTop - headerHeight - ribbonHeight - 10;
 
-                    // Only scroll up if we are currently scrolled past the target
                     if (window.scrollY > scrollTarget) {
                         window.scrollTo({
                             top: scrollTarget,
@@ -1172,6 +1232,44 @@
                 }, 10);
             });
         });
+        
+        // =========================================
+        // DYNAMIC GOOGLE SHEETS PRICING (UPDATED FOR 3 COLUMNS)
+        // =========================================
+        
+        // PASTE YOUR PUBLISHED CSV LINK HERE:
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRcZlHxXwP66Nkr3pjStMYU8M1Gb29kIkFq7OokjOE_JPnWDr_Di_bHC9ito3RIGTe98Flk180d7E6b/pub?output=csv';
+
+        async function fetchPrices() {
+            try {
+                const response = await fetch(sheetUrl);
+                const data = await response.text();
+                
+                const rows = data.split('\n');
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const columns = rows[i].split(',');
+                    
+                    // Now checking for at least 3 columns (Category, ID, Price)
+                    if (columns.length >= 3) {
+                        // ID is now in Column B (Index 1), Price is in Column C (Index 2)
+                        const id = columns[1].trim(); 
+                        const price = columns[2].trim(); 
+                        
+                        const priceElement = document.querySelector(`.item-price[data-item-id="${id}"]`);
+                        
+                        if (priceElement) {
+                            priceElement.textContent = price;
+                            priceElement.classList.add('loaded');
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching menu prices:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchPrices);
     </script>
 </body>
 </html>
