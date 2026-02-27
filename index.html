@@ -97,22 +97,21 @@
             outline-offset: 4px;
         }
 
-        /* Skip to content link */
+        /* Skip to content link - BULLETPROOF FIX */
         .skip-link {
             position: absolute;
-            top: 0;
+            top: -100px; 
             left: 0;
-            transform: translateY(-100%);
             background: var(--accent-gold);
             color: #000;
             padding: 12px 24px;
-            z-index: 2000;
-            transition: transform 0.3s ease;
+            z-index: 3000;
+            transition: top 0.3s ease;
             font-weight: 600;
             border-bottom-right-radius: 4px;
         }
         .skip-link:focus {
-            transform: translateY(0);
+            top: 0; 
         }
 
         /* Gold Primary Buttons */
@@ -160,7 +159,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 2000;
             transition: background-color 0.4s ease, padding 0.4s ease, transform 0.4s ease;
         }
         
@@ -181,7 +180,24 @@
             pointer-events: none; 
         }
 
-        .logo { font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-gold); font-weight: 700; letter-spacing: -0.5px; }
+        /* Image Logo Styles */
+        .logo-link {
+            display: inline-block;
+            transition: opacity 0.3s ease;
+            z-index: 2001; /* Stays above mobile menu */
+        }
+        .logo-link:hover { opacity: 0.8; }
+        .site-logo {
+            height: 80px; 
+            width: auto;
+            display: block;
+            transition: height 0.3s ease;
+        }
+        .footer-site-logo {
+            max-width: 250px;
+            height: auto;
+            display: block;
+        }
         
         .main-nav {
             display: flex;
@@ -197,6 +213,85 @@
         }
         .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
         .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Mobile Hamburger Icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 32px;
+            height: 22px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 2001; /* Keeps it above the overlay */
+        }
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-main);
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-nav-links {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        .mobile-nav-links li {
+            margin-bottom: 35px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        .mobile-menu-overlay.active .mobile-nav-links li {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Staggered load effect */
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(5) { transition-delay: 0.3s; }
+
+        .mobile-nav-links a {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+        .mobile-nav-links a:hover { color: var(--accent-gold); }
+
+        /* Mobile Sticky Bottom Bar */
+        .mobile-bottom-bar { display: none; }
 
         /* Split Asymmetrical Hero */
         .hero {
@@ -332,7 +427,6 @@
         .footer-container { max-width: 1440px; margin: 0 auto; }
         .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
         .footer-brand { display: flex; flex-direction: column; gap: 20px; }
-        .footer-logo { font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; }
         .social-icons { display: flex; gap: 15px; }
         .social-icons a svg { width: 20px; height: 20px; fill: var(--text-muted); transition: fill 0.3s ease; }
         .social-icons a:hover svg { fill: var(--accent-gold); }
@@ -353,22 +447,43 @@
             .footer-nav { gap: 40px; }
         }
         @media (max-width: 900px) {
+            /* Mobile Adjustments */
+            .site-logo { height: 55px; } /* Increased from 40px */
+            
+            /* Hide desktop nav, show hamburger */
+            .nav-links, .desktop-order-btn { display: none; }
+            .hamburger { display: flex; }
+
+            /* Add padding to body so footer clears the sticky bottom button */
+            body { padding-bottom: 70px; }
+
+            /* Show sticky mobile bar */
+            .mobile-bottom-bar {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                z-index: 2500;
+                background-color: var(--bg-main);
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.6);
+            }
+            .mobile-bottom-bar .btn-primary {
+                width: 100%;
+                border-radius: 0;
+                padding: 18px;
+                text-align: center;
+                font-size: 1.05rem;
+            }
+
             .hero-container, .welcome-split, .sip-container { flex-direction: column; text-align: center; gap: 40px; }
             .hero-text, .sip-text { padding-right: 0; }
-            
-            /* Center the constrained paragraph text on mobile */
             .hero-text p.subtitle, .sip-text p { margin: 0 auto 40px auto; }
-            
             .hero-text h1 { font-size: 3rem; }
             .hero-image { width: 100%; height: 50vh; }
             .sip-slider-container { flex: none; width: 100%; height: 400px; }
             .welcome-image { flex: none; width: 100%; }
             .masonry-grid { column-count: 2; }
-            
-            /* Mobile Navigation Update: Hide links, keep button visible */
-            .nav-links { display: none; }
-            .main-nav { gap: 15px; }
-
             .slider-controls { justify-content: center; }
             .slide-caption { left: 50%; transform: translateX(-50%); text-align: center; width: 100%; }
             .featuring-list { gap: 15px; }
@@ -396,7 +511,9 @@
 
     <header id="site-header">
         <div class="container">
-            <div class="logo" aria-label="Enthaice Thai Kitchen">ENTHAICE</div>
+            <a href="/" class="logo-link" aria-label="Enthaice Thai Kitchen Home">
+                <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="site-logo">
+            </a>
             
             <nav aria-label="Main navigation" class="main-nav">
                 <ul class="nav-links">
@@ -404,11 +521,28 @@
                     <li><a href="/reservation">Reservations</a></li>
                     <li><a href="/catering">Catering & Events</a></li>
                     <li><a href="/story">About Us</a></li>
+                    <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
                 </ul>
-                <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+                <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary desktop-order-btn" target="_blank" rel="noopener noreferrer">Order Online</a>
+                
+                <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/reservation">Reservations</a></li>
+            <li><a href="/catering">Catering & Events</a></li>
+            <li><a href="/story">About Us</a></li>
+            <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+        </ul>
+    </div>
 
     <main id="main-content">
         <section class="hero" aria-labelledby="hero-heading">
@@ -668,7 +802,7 @@
             <div class="footer-top">
                 
                 <div class="footer-brand">
-                    <div class="footer-logo">ENTHAICE THAI KITCHEN</div>
+                    <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="footer-site-logo">
                     <div class="social-icons" aria-label="Social media links">
                         <a href="https://www.facebook.com/enthaiceastroia" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
                             <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
@@ -691,7 +825,7 @@
                         <a href="/events">Events</a>
                     </div>
                     <div>
-                        <a href="/gift-cards">Gift Cards</a>
+                        <a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a>
                         <a href="/faq">Q&A</a>
                         <a href="/contact">Contact Us</a>
                     </div>
@@ -711,7 +845,36 @@
         </div>
     </footer>
 
+    <div class="mobile-bottom-bar">
+        <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+    </div>
+
     <script>
+        // Hamburger Menu Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isActive = mobileMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', isActive);
+            
+            // Prevent background scrolling when menu is open
+            body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            });
+        });
+
         // Sticky Header Logic
         const header = document.getElementById('site-header');
         
