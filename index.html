@@ -11,13 +11,17 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "Enthaice Thai Kitchen",
-      "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&q=80",
+      "image": [
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-1x1.jpg",
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-4x3.jpg",
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-16x9.jpg"
+        ],
       "@id": "",
       "url": "https://www.enthaice.com",
       "telephone": "+17189321118",
       "servesCuisine": "Thai, Northern Thai",
       "acceptsReservations": "True",
-      "menu": "https://www.enthaice.com/menu",
+      "menu": "https://www.enthaicethaikitchen.com/menu",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
@@ -270,7 +274,7 @@
         .location-header { text-align: center; margin-bottom: 50px; }
         .location-header h2 { font-size: 2.8rem; }
         .location-card { display: flex; background-color: var(--bg-main); border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); max-width: 1200px; margin: 0 auto; }
-        .location-map { flex: 1.2; background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80') center/cover; min-height: 400px; position: relative; }
+        .location-map { flex: 1.2; background: url('images/enthaice-map.jpg') center/cover; min-height: 400px; position: relative; }
         .location-info { flex: 1; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
         .location-info h3 { font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 5px; }
         .location-info > p.subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
@@ -397,7 +401,7 @@
         <section class="section" aria-labelledby="welcome-heading">
             <div class="welcome-split">
                 <div class="welcome-image">
-                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80" alt="Interior view of Enthaice Thai Kitchen showing a warm, inviting dining space">
+                    <img src="images/enthaice-welcome-image.jpg" alt="Interior view of Enthaice Thai Kitchen showing a warm, inviting dining space">
                 </div>
                 <div class="welcome-text">
                     <h2 id="welcome-heading">Welcome to Enthaice Thai Kitchen</h2>
@@ -415,12 +419,12 @@
             </div>
             
             <div class="masonry-grid" aria-label="Gallery of featured dishes">
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&q=80&w=400&h=600" alt=""></div>
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?auto=format&fit=crop&q=80&w=400&h=400" alt=""></div>
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1626804475297-4160aae6fc8a?auto=format&fit=crop&q=80&w=400&h=500" alt=""></div>
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1562565652-a6e87f620546?auto=format&fit=crop&q=80&w=400&h=700" alt=""></div>
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400&h=450" alt=""></div>
-                <div class="masonry-item"><img src="https://images.unsplash.com/photo-1548943487-a2e4e43b4859?auto=format&fit=crop&q=80&w=400&h=550" alt=""></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-01.jpg" alt=""></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-02.jpg" alt="Duck Noodle Soup"></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-03.jpg" alt="Chiang Mai Sausage"></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-04.jpg" alt="Crab Meat Fried Rice"></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Laab Nuer"></div>
+                <div class="masonry-item"><img src="images/enthaice-crafted-highlight-06.jpg" alt="Mango Fish"></div>
             </div>
         </section>
 
@@ -432,23 +436,23 @@
                 <div class="slider-controls" role="group" aria-label="Slider controls">
                     <button class="btn-icon" id="playPauseBtn" aria-label="Pause slider" onclick="togglePlayPause()">⏸</button>
                     <button class="dot active" aria-label="Go to slide 1: Thai Spice Cocktail" onclick="setSlide(0)"></button>
-                    <button class="dot" aria-label="Go to slide 2: Lychee Bliss" onclick="setSlide(1)"></button>
-                    <button class="dot" aria-label="Go to slide 3: Lemongrass Cooler" onclick="setSlide(2)"></button>
+                    <button class="dot" aria-label="Go to slide 2: Lychee Martini" onclick="setSlide(1)"></button>
+                    <button class="dot" aria-label="Go to slide 3: Dirty Casper" onclick="setSlide(2)"></button>
                 </div>
             </div>
             
             <div class="sip-slider-container" aria-live="polite">
                 <div class="slide active">
-                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&q=80" alt="Thai Spice Cocktail with fresh garnishes">
-                    <div class="slide-caption"><h3>Thai Spice Cocktail</h3></div>
+                    <img src="images/enthaice-sip-01.jpg" alt="Thai Spice Cocktail with fresh garnishes">
+                    <div class="slide-caption"><h3>Thai Spice</h3></div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80" alt="Lychee Bliss cocktail in a martini glass">
-                    <div class="slide-caption"><h3>Lychee Bliss</h3></div>
+                    <img src="images/enthaice-sip-02.jpg" alt="Lychee Martini cocktail in a martini glass">
+                    <div class="slide-caption"><h3>Lychee Martini</h3></div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80" alt="Refreshing Lemongrass Cooler drink">
-                    <div class="slide-caption"><h3>Lemongrass Cooler</h3></div>
+                    <img src="images/enthaice-sip-03.jpg" alt="An Enthaice signature drink for the Halloween holiday">
+                    <div class="slide-caption"><h3>Dirty Casper</h3></div>
                 </div>
             </div>
         </section>
@@ -460,7 +464,7 @@
             <div class="experience-grid">
                 
                 <article class="exp-card">
-                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80" alt="An elegantly set table in the restaurant" class="exp-img">
+                    <img src="images/enthaice-got-plans.jpg" alt="An elegantly set table in the restaurant" class="exp-img">
                     <div class="exp-content">
                         <h3>Got Plans Tonight?</h3>
                         <p>Looking for bold flavors and a spot worth sitting down for? Reserve your table now and we'll make sure there's a seat waiting—no guesswork, no wait, just good food and the right vibe.</p>
@@ -469,7 +473,7 @@
                 </article>
 
                 <article class="exp-card">
-                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80" alt="A large, vibrant spread of catered Thai food" class="exp-img">
+                    <img src="images/enthaice-catering-without-boring.jpg" alt="A large, vibrant spread of catered Thai food" class="exp-img">
                     <div class="exp-content">
                         <h3>Catering Without the Boring</h3>
                         <p>Let Enthaice Thai Kitchen handle the bold flavors while you handle the guest list. Whether it's a team lunch, a private event, or something in between, our catering brings serious energy to the table—fresh, packed with flavor, and ready when you are.</p>
@@ -478,7 +482,7 @@
                 </article>
 
                 <article class="exp-card">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80" alt="A diverse group of friends enjoying a meal together" class="exp-img">
+                    <img src="images/enthaice-place-for-everyone.jpg" alt="A diverse group of friends enjoying a meal together" class="exp-img">
                     <div class="exp-content">
                         <h3>A Place For Everyone</h3>
                         <p>Enjoy a space that's built for all kinds of moments—outdoor seating for open-air meals, vegetarian options full of bold flavor, high chairs for the little ones, and a dine-in experience that keeps things easy and welcoming. There's always room here.</p>
