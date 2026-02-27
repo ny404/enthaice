@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Enthaice Thai Kitchen - Astoria, NY</title>
+    <meta name="description" content="Explore the menu at Enthaice Thai Kitchen. Authentic Northern Thai flavors, classic curries, fresh seafood, and signature cocktails in Astoria, Queens.">
+    
+    <link rel="icon" type="image/png" href="enthaice-favicon.png">
+    <link rel="apple-touch-icon" href="enthaice-apple-touch.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Enthaice Thai Kitchen",
+      "image": [
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-1x1.jpg",
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-4x3.jpg",
+        "https://www.enthaicethaikitchen.com/images/enthaice-jsonld-16x9.jpg"
+        ],
+      "@id": "",
+      "url": "https://www.enthaice.com",
+      "telephone": "+17189321118",
+      "servesCuisine": "Thai, Northern Thai",
+      "acceptsReservations": "True",
+      "menu": "https://www.enthaicethaikitchen.com/menu",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "33-20 31st Ave",
+        "addressLocality": "Astoria",
+        "addressRegion": "NY",
+        "postalCode": "11106",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7634,
+        "longitude": -73.9238
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "12:00",
+          "closes": "21:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "22:30"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* =========================================
+           LOCAL FONTS (LOCKED)
+           ========================================= */
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Light.woff2') format('woff2'), url('fonts/Poppins-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Regular.woff2') format('woff2'), url('fonts/Poppins-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Medium.woff2') format('woff2'), url('fonts/Poppins-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-SemiBold.woff2') format('woff2'), url('fonts/Poppins-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Regular.woff2') format('woff2'), url('fonts/Lora-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Italic.woff2') format('woff2'), url('fonts/Lora-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Medium.woff2') format('woff2'), url('fonts/Lora-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-SemiBold.woff2') format('woff2'), url('fonts/Lora-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+        
+        /* Dark & Gold Palette */
+        :root {
+            --bg-main: #12100e; 
+            --bg-card: #1c1916; 
+            --bg-footer: #0a0908;
+            --accent-gold: #dcb345;
+            --accent-gold-hover: #bda036;
+            --text-main: #f5f5f5;
+            --text-muted: #a09d98;
+            --font-heading: 'Lora', serif;
+            --font-body: 'Poppins', sans-serif;
+            --focus-outline: 2px solid var(--accent-gold);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        
+        /* STRICT 1440px LAYOUT */
+        .container { max-width: 1440px; margin: 0 auto; width: 100%; }
+        
+        a:focus-visible, button:focus-visible, input:focus-visible { outline: var(--focus-outline); outline-offset: 4px; }
+
+        /* Skip Link & Buttons */
+        .skip-link { position: absolute; top: -100px; left: 0; background: var(--accent-gold); color: #000; padding: 12px 24px; z-index: 3000; transition: top 0.3s ease; font-weight: 600; border-bottom-right-radius: 4px; }
+        .skip-link:focus { top: 0; }
+        .btn-primary { background-color: var(--accent-gold); color: #000; padding: 12px 30px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; display: inline-block; transition: background-color 0.3s ease, transform 0.2s ease; }
+        .btn-primary:hover { background-color: var(--accent-gold-hover); transform: translateY(-2px); }
+
+        /* Header */
+        header { padding: 25px 5%; background-color: transparent; position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; transition: background-color 0.4s ease, padding 0.4s ease, transform 0.4s ease; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        header.scrolled { background-color: rgba(18, 16, 14, 0.95); backdrop-filter: blur(10px); padding: 15px 5%; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo-link { display: inline-block; transition: opacity 0.3s ease; z-index: 2001; }
+        .logo-link:hover { opacity: 0.8; }
+        .site-logo { height: 80px; width: auto; display: block; transition: height 0.3s ease; }
+        .main-nav { display: flex; align-items: center; gap: 40px; }
+        .nav-links { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Mobile Hamburger Icon */
+        .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 32px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 2001; }
+        .hamburger span { width: 100%; height: 2px; background-color: var(--accent-gold); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-main); z-index: 1500; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-nav-links { list-style: none; text-align: center; padding: 0; margin: 0; }
+        .mobile-nav-links li { margin-bottom: 35px; transform: translateY(20px); opacity: 0; transition: transform 0.4s ease, opacity 0.4s ease; }
+        .mobile-menu-overlay.active .mobile-nav-links li { transform: translateY(0); opacity: 1; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-links a { font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-main); }
+        .mobile-nav-links a:hover { color: var(--accent-gold); }
+        .mobile-bottom-bar { display: none; }
+
+        /* =========================================
+           MENU SPECIFIC STYLES
+           ========================================= */
+
+        /* Menu Hero */
+        .menu-hero { padding: 180px 5% 60px; text-align: center; background: radial-gradient(circle at top, rgba(220, 179, 69, 0.08) 0%, transparent 60%); }
+        .menu-hero h1 { font-size: 3.5rem; margin-bottom: 15px; font-style: italic; letter-spacing: 1px; }
+        .menu-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Sticky Tab Ribbon */
+        .tab-ribbon-container { position: sticky; top: 111px; z-index: 1000; background-color: rgba(18, 16, 14, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(220, 179, 69, 0.2); padding: 0 5%; }
+        .tab-ribbon { display: flex; overflow-x: auto; gap: 35px; padding: 20px 0; max-width: 1440px; margin: 0 auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .tab-ribbon::-webkit-scrollbar { display: none; }
+        
+        .tab-btn { background: none; border: none; color: var(--text-muted); font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: color 0.3s ease; padding: 5px 0; position: relative; text-transform: uppercase; letter-spacing: 1px; }
+        .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0%; height: 2px; background-color: var(--accent-gold); transition: width 0.3s ease; }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { color: var(--accent-gold); }
+        .tab-btn.active::after { width: 100%; }
+
+        /* Content Area */
+        .menu-content-container { padding: 60px 5% 120px; max-width: 1440px; margin: 0 auto; min-height: 60vh; }
+        .tab-panel { display: none; opacity: 0; animation: fadeIn 0.6s ease forwards; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* The Ornate Menu Frame */
+        .menu-frame {
+            background-color: var(--bg-card);
+            border-radius: 4px;
+            padding: 70px 60px 90px; 
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(220, 179, 69, 0.5);
+            outline: 1px solid rgba(220, 179, 69, 0.15);
+            outline-offset: -10px;
+        }
+        
+        /* Corner Flourishes for the Frame */
+        .corner-flourish { position: absolute; width: 40px; height: 40px; pointer-events: none; }
+        .corner-flourish svg { fill: var(--accent-gold); opacity: 0.6; width: 100%; height: 100%; }
+        .top-left { top: 15px; left: 15px; }
+        .top-right { top: 15px; right: 15px; transform: scaleX(-1); }
+        .bottom-left { bottom: 15px; left: 15px; transform: scaleY(-1); }
+        .bottom-right { bottom: 15px; right: 15px; transform: scale(-1, -1); }
+
+        /* Editorial Split Section */
+        .editorial-split {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 60px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .editorial-image { flex: 1; position: relative; }
+        .editorial-image img { width: 100%; height: auto; border-radius: 50% 50% 10px 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); border: 1px solid rgba(220, 179, 69, 0.2); object-fit: cover; aspect-ratio: 4/5; }
+        .editorial-text { flex: 1.2; }
+        .editorial-label { color: var(--accent-gold); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; font-weight: 600; margin-bottom: 15px; display: inline-block; }
+        .editorial-text h2 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .editorial-text p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px; }
+
+        /* Menu Item Grid */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; }
+        .menu-item { display: flex; flex-direction: column; position: relative; }
+        
+        /* Highlight Box */
+        .menu-item.highlight-box { border: 1px dashed rgba(220, 179, 69, 0.5); background-color: rgba(220, 179, 69, 0.03); padding: 20px; border-radius: 8px; margin: -20px; }
+
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dotted rgba(255,255,255,0.15); margin-bottom: 12px; padding-bottom: 5px; }
+        .item-title-wrap { display: flex; align-items: center; gap: 10px; }
+        .item-name { font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); }
+        
+        /* Dietary & Spice Icons */
+        .dietary-icons { display: flex; gap: 5px; font-size: 0.9rem; }
+        .icon-spice { color: #e63946; }
+        .icon-veg { color: #2a9d8f; font-weight: bold; }
+        .icon-gf { color: var(--accent-gold); font-size: 0.75rem; font-weight: 700; border: 1px solid var(--accent-gold); padding: 0 4px; border-radius: 3px; display: flex; align-items: center;}
+
+        .item-price { font-family: var(--font-body); font-size: 1.1rem; color: var(--accent-gold); font-weight: 600; padding-left: 15px; }
+        .item-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Footer */
+        footer { background-color: var(--bg-main); padding: 80px 5% 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+        .footer-site-logo { max-width: 250px; height: auto; display: block; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a svg { width: 20px; height: 20px; fill: var(--text-muted); transition: fill 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-gold); }
+        .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+        .footer-nav a { display: block; color: var(--text-main); margin-bottom: 12px; font-size: 0.95rem; transition: color 0.3s ease; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; flex-wrap: wrap; gap: 20px; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a:hover { color: var(--accent-gold); }
+
+        /* Media Queries */
+        @media (max-width: 900px) {
+            .site-logo { height: 55px; } 
+            .nav-links, .desktop-order-btn { display: none; }
+            .hamburger { display: flex; }
+            body { padding-bottom: 70px; }
+            .mobile-bottom-bar { display: block; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2500; background-color: var(--bg-main); box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
+            .mobile-bottom-bar .btn-primary { width: 100%; border-radius: 0; padding: 18px; text-align: center; font-size: 1.05rem; }
+            
+            /* Mobile Frame Adjustments */
+            .menu-frame { padding: 40px 20px 85px 20px; outline-offset: -6px; }
+            .menu-grid { grid-template-columns: 1fr; gap: 40px; }
+            .menu-item.highlight-box { margin: 0; } 
+            
+            /* Mobile Editorial Split */
+            .editorial-split { flex-direction: column; gap: 30px; text-align: center; }
+            .editorial-image img { aspect-ratio: 1/1; border-radius: 50%; width: 80%; margin: 0 auto; display: block; }
+            
+            .tab-ribbon-container { top: 85px; padding: 0 20px; }
+            .menu-hero { padding: 140px 5% 40px; }
+            .menu-hero h1 { font-size: 2.8rem; }
+
+            .footer-top { flex-direction: column; align-items: center; text-align: center; }
+            .footer-brand { align-items: center; } 
+            .social-icons { justify-content: center; } 
+            .footer-nav { grid-template-columns: repeat(2, 1fr); text-align: center; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .footer-nav { grid-template-columns: 1fr; }
+            .item-header { flex-direction: column; align-items: flex-start; gap: 5px; border-bottom: none; }
+            .item-title-wrap { width: 100%; border-bottom: 1px dotted rgba(255,255,255,0.15); padding-bottom: 5px; }
+            .item-price { padding-left: 0; color: var(--text-main); }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="site-header">
+        <div class="container">
+            <a href="/" class="logo-link" aria-label="Enthaice Thai Kitchen Home">
+                <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="site-logo">
+            </a>
+            
+            <nav aria-label="Main navigation" class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="/menu" style="color: var(--accent-gold);">Menu</a></li>
+                    <li><a href="/reservation">Reservations</a></li>
+                    <li><a href="/catering">Catering & Events</a></li>
+                    <li><a href="/story">About Us</a></li>
+                    <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+                </ul>
+                <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary desktop-order-btn" target="_blank" rel="noopener noreferrer">Order Online</a>
+                
+                <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/menu" style="color: var(--accent-gold);">Menu</a></li>
+            <li><a href="/reservation">Reservations</a></li>
+            <li><a href="/catering">Catering & Events</a></li>
+            <li><a href="/story">About Us</a></li>
+            <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        
+        <section class="menu-hero">
+            <div class="container">
+                <h1>Our Menu</h1>
+                <p>Authentic Northern Thai cooking. Bold, uncompromising, and crafted for the curious.</p>
+            </div>
+        </section>
+
+        <div class="tab-ribbon-container">
+            <nav class="tab-ribbon" role="tablist" aria-label="Menu Categories">
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-snacks" id="tab-snacks">Snacks</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-soup" id="tab-soup">Soup</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-salad" id="tab-salad">Salad & Yum Yum</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-chef" id="tab-chef">Chef's Suggestions</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-fish" id="tab-fish">Fish Selections</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-seafood" id="tab-seafood">Mixed Seafood</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-meat" id="tab-meat">Meat & Poultry</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-veg" id="tab-veg">Vegetables</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle-soup" id="tab-noodle-soup">Noodle Soup</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle" id="tab-noodle">Noodle</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sauteed" id="tab-sauteed">Sautéed</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-curry" id="tab-curry">Curry</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-rice" id="tab-rice">Fried Rice</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sides" id="tab-sides">Side Order</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-dessert" id="tab-dessert">Dessert</button>
+            </nav>
+        </div>
+
+        <div class="menu-content-container">
+            
+            <section id="panel-snacks" class="tab-panel active" role="tabpanel" aria-labelledby="tab-snacks">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+
+                    <div class="editorial-split">
+                        <div class="editorial-image">
+                            <img src="images/enthaice-crafted-highlight-03.jpg" alt="Chiang Mai Sausage Platter">
+                        </div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Highly Recommended</span>
+                            <h2>Chiang Mai Sausage</h2>
+                            <p>An authentic taste of Northern Thailand. Our signature grilled pork sausage is mixed with traditional spices, lemongrass, and fresh herbs. Served with a side of cooling cucumber relish to perfectly balance the heat.</p>
+                            <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary" target="_blank" rel="noopener noreferrer">Order For Pickup</a>
+                        </div>
+                    </div>
+
+                    <div class="menu-grid">
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Crispy Spring Rolls</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                </div>
+                                <span class="item-price">$9.00</span>
+                            </div>
+                            <p class="item-desc">Glass noodles, cabbage, taro, and carrot served with sweet plum sauce.</p>
+                        </article>
+
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Chiang Mai Sausage</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$12.00</span>
+                            </div>
+                            <p class="item-desc">Northern Thai style grilled pork sausage mixed with traditional spices and fresh herbs.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Chicken Curry Puffs</h3></div>
+                                <span class="item-price">$10.00</span>
+                            </div>
+                            <p class="item-desc">Minced chicken, potatoes, and onions cooked with curry powder, served with cucumber relish.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Fried Calamari</h3>
+                                </div>
+                                <span class="item-price">$12.00</span>
+                            </div>
+                            <p class="item-desc">Crispy fried calamari served with sweet chili sauce.</p>
+                        </article>
+                    </div> 
+                </div> 
+            </section>
+
+            <section id="panel-soup" class="tab-panel" role="tabpanel" aria-labelledby="tab-soup">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-02.jpg" alt="Tom Yum Soup"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">A Warming Classic</span>
+                            <h2>Tom Yum Soup</h2>
+                            <p>Our famous hot and sour broth, packed with lemongrass, galangal, kaffir lime leaves, fresh chili, and mushrooms. The perfect balance of spicy and tart.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Tom Yum</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$8.00</span>
+                            </div>
+                            <p class="item-desc">Spicy and sour soup with mushrooms, lemongrass, galangal, and lime leaves.</p>
+                        </article>
+                        
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Tom Kha</h3>
+                                </div>
+                                <span class="item-price">$8.50</span>
+                            </div>
+                            <p class="item-desc">Coconut milk soup with galangal, kaffir lime leaves, mushrooms, and lime juice.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Clear Soup</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                </div>
+                                <span class="item-price">$7.00</span>
+                            </div>
+                            <p class="item-desc">Mixed vegetables and glass noodles in a clear, comforting vegetable broth.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-salad" class="tab-panel" role="tabpanel" aria-labelledby="tab-salad">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Papaya Salad"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Fresh & Vibrant</span>
+                            <h2>Papaya Salad (Som Tum)</h2>
+                            <p>A true Thai street food staple. Hand-shredded green papaya pounded in a mortar with tomatoes, green beans, peanuts, garlic, and fiery chilies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Papaya Salad</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$14.00</span>
+                            </div>
+                            <p class="item-desc">Shredded green papaya, tomatoes, string beans, and peanuts in a spicy lime dressing.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Larb Gai</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$15.00</span>
+                            </div>
+                            <p class="item-desc">Minced chicken tossed with mint, scallions, cilantro, roasted rice powder, and lime dressing.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Mango Salad</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                </div>
+                                <span class="item-price">$14.00</span>
+                            </div>
+                            <p class="item-desc">Shredded green mango with red onions, cashews, and a sweet and sour lime dressing.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-chef" class="tab-panel" role="tabpanel" aria-labelledby="tab-chef">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/home/Khao Soi Chiang Mai.jpeg" alt="Khao Soi"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Chef's Signature</span>
+                            <h2>Khao Soi Chiang Mai</h2>
+                            <p>The crown jewel of Northern Thai cuisine. Egg noodles swimming in a complex, creamy coconut curry broth, topped with crispy noodles, pickled mustard greens, and shallots.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Khao Soi</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$19.00</span>
+                            </div>
+                            <p class="item-desc">Northern style egg noodle curry topped with crispy noodles, pickled mustard greens, and shallots.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Crispy Half Duck Tamarind</h3></div>
+                                <span class="item-price">$28.00</span>
+                            </div>
+                            <p class="item-desc">Crispy roasted half duck topped with a rich, sweet and sour tamarind glaze and mixed vegetables.</p>
+                        </article>
+                        
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Crab Meat Fried Rice</h3></div>
+                                <span class="item-price">$22.00</span>
+                            </div>
+                            <p class="item-desc">Classic fried rice with generous lumps of premium crab meat, egg, and scallions.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-fish" class="tab-panel" role="tabpanel" aria-labelledby="tab-fish">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-06.jpg" alt="Mango Fish"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Fresh Catch</span>
+                            <h2>Mango Fish</h2>
+                            <p>A perfectly crisped whole or filleted fish, topped with our signature sweet and sour green mango salad. A vibrant, textural masterpiece.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Mango Fish</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$32.00</span>
+                            </div>
+                            <p class="item-desc">Crispy whole red snapper or fillet topped with shredded green mango, red onions, and cashews in a lime dressing.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Steamed Branzino</h3></div>
+                                <span class="item-price">$32.00</span>
+                            </div>
+                            <p class="item-desc">Steamed whole branzino with fresh ginger, scallions, and shiitake mushrooms in a light soy broth.</p>
+                        </article>
+                        
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Crispy Sweet Chili Fish</h3></div>
+                                <span class="item-price">$32.00</span>
+                            </div>
+                            <p class="item-desc">Deep-fried whole snapper topped with our signature three-flavor sweet chili sauce.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-seafood" class="tab-panel" role="tabpanel" aria-labelledby="tab-seafood">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Pad Cha Seafood"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">From the Wok</span>
+                            <h2>Pad Cha Seafood</h2>
+                            <p>An aromatic, sizzling wok dish featuring a medley of fresh seafood tossed with wild ginger, green peppercorns, and fiery chili.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Pad Cha Seafood</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$26.00</span>
+                            </div>
+                            <p class="item-desc">Sautéed mixed seafood with fresh herbs, wild ginger (krachai), peppercorns, and basil in a spicy sauce.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Garlic Pepper Seafood</h3></div>
+                                <span class="item-price">$25.00</span>
+                            </div>
+                            <p class="item-desc">Shrimp, scallops, and squid sautéed with fresh garlic and black pepper, served over steamed vegetables.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-meat" class="tab-panel" role="tabpanel" aria-labelledby="tab-meat">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Meat Selections"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Classic Preparations</span>
+                            <h2>Meat & Poultry</h2>
+                            <p>Tender cuts of chicken, pork, or beef expertly wok-tossed or grilled with traditional Thai sauces and fresh aromatics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Gai Pad Med Mamuang</h3></div>
+                                <span class="item-price">$18.00</span>
+                            </div>
+                            <p class="item-desc">Crispy chicken sautéed with roasted cashew nuts, onions, scallions, and bell peppers in a sweet chili paste.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Moo Pad Prik Khing</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$18.00</span>
+                            </div>
+                            <p class="item-desc">Sautéed pork with string beans and kaffir lime leaves in a fragrant red curry paste.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-veg" class="tab-panel" role="tabpanel" aria-labelledby="tab-veg">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Vegetable Dishes"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Plant-Based</span>
+                            <h2>Vegetable Selections</h2>
+                            <p>Vibrant, crisp, and full of flavor. Our vegetable dishes are wok-fired to order, preserving their natural crunch and color.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Eggplant Basil</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian, Spicy">
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                    </div>
+                                </div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">Sautéed Asian eggplant with fresh basil, chili, bell peppers, and garlic sauce.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Mixed Veggies Garlic</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian"><span class="icon-veg" aria-hidden="true">🌱</span></div>
+                                </div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">A seasonal assortment of fresh vegetables lightly sautéed in a savory brown garlic sauce.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-noodle-soup" class="tab-panel" role="tabpanel" aria-labelledby="tab-noodle-soup">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-02.jpg" alt="Duck Noodle Soup"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Comfort in a Bowl</span>
+                            <h2>Noodle Soups</h2>
+                            <p>Rich, long-simmered broths poured over thin rice noodles, fresh herbs, and tender meats. The ultimate Thai comfort food.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Duck Noodle Soup</h3></div>
+                                <span class="item-price">$18.00</span>
+                            </div>
+                            <p class="item-desc">Roasted duck in a deeply spiced cinnamon and star anise broth with thin rice noodles and bean sprouts.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Beef Noodle Soup</h3></div>
+                                <span class="item-price">$17.00</span>
+                            </div>
+                            <p class="item-desc">Slow-braised beef chunks in a rich, dark broth with thin rice noodles, celery, and fried garlic.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-noodle" class="tab-panel" role="tabpanel" aria-labelledby="tab-noodle">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-01.jpg" alt="Pad Thai Noodles"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Street Food Classics</span>
+                            <h2>Wok Noodles</h2>
+                            <p>From the iconic sweet and tangy Pad Thai to the fiery heat of Drunken Noodles, all our wok dishes are kissed with authentic wok hei (breath of the wok).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Pad Thai</h3></div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">Thin rice noodles sautéed with egg, peanuts, bean sprouts, and scallions in a tamarind sauce.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Pad Kee Mao (Drunken Noodles)</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">Broad flat rice noodles sautéed with egg, chili, bell peppers, onions, and fresh basil.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Pad See Ew</h3></div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">Broad flat rice noodles sautéed with egg and Chinese broccoli in a sweet dark soy sauce.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-sauteed" class="tab-panel" role="tabpanel" aria-labelledby="tab-sauteed">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-05.jpg" alt="Kra Pao Basil"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Fast & Fiery</span>
+                            <h2>Sautéed (Stir-Fry)</h2>
+                            <p>Choose your protein and let our wok chefs do the rest. These fast-fired dishes are packed with intense aromatics and bold flavors.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Kra Pao (Basil Sauce)</h3>
+                                    <div class="dietary-icons" aria-label="Spicy"><span class="icon-spice" aria-hidden="true">🌶️</span></div>
+                                </div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">A classic Thai stir-fry with fresh holy basil, onions, bell peppers, and fiery bird's eye chili.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Pad Kratiem (Garlic Sauce)</h3></div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">A savory and slightly sweet garlic and black pepper sauce, served over a bed of steamed vegetables.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-curry" class="tab-panel" role="tabpanel" aria-labelledby="tab-curry">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/home/Khao Soi Chiang Mai.jpeg" alt="Thai Curry"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Rich & Complex</span>
+                            <h2>Classic Curries</h2>
+                            <p>Our curries are built from scratch, balancing the richness of coconut milk with the complex heat of traditional Thai chili pastes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Green Curry</h3>
+                                    <div class="dietary-icons" aria-label="Spicy, Gluten-Free">
+                                        <span class="icon-spice" aria-hidden="true">🌶️</span>
+                                        <span class="icon-gf" aria-hidden="true">GF</span>
+                                    </div>
+                                </div>
+                                <span class="item-price">$17.00</span>
+                            </div>
+                            <p class="item-desc">Spicy green curry paste in coconut milk with bamboo shoots, eggplant, bell peppers, and basil.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Massaman Curry</h3>
+                                    <div class="dietary-icons" aria-label="Gluten-Free"><span class="icon-gf" aria-hidden="true">GF</span></div>
+                                </div>
+                                <span class="item-price">$17.00</span>
+                            </div>
+                            <p class="item-desc">A mild, rich curry with potatoes, onions, and roasted peanuts in a warmly spiced coconut broth.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Panang Curry</h3>
+                                    <div class="dietary-icons" aria-label="Gluten-Free"><span class="icon-gf" aria-hidden="true">GF</span></div>
+                                </div>
+                                <span class="item-price">$17.00</span>
+                            </div>
+                            <p class="item-desc">A slightly sweet and thick red curry with string beans, bell peppers, and shredded kaffir lime leaves.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-rice" class="tab-panel" role="tabpanel" aria-labelledby="tab-rice">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-crafted-highlight-04.jpg" alt="Crab Fried Rice"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">Wok Fired</span>
+                            <h2>Fried Rice</h2>
+                            <p>Perfectly separated grains of jasmine rice, wok-tossed at high heat to achieve that signature smoky flavor.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Pineapple Fried Rice</h3></div>
+                                <span class="item-price">$17.00</span>
+                            </div>
+                            <p class="item-desc">Sweet and savory fried rice with chunks of pineapple, roasted cashews, egg, and curry powder.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Thai Fried Rice</h3></div>
+                                <span class="item-price">$16.00</span>
+                            </div>
+                            <p class="item-desc">Traditional fried rice with egg, tomatoes, onions, and Chinese broccoli in a light soy seasoning.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-sides" class="tab-panel" role="tabpanel" aria-labelledby="tab-sides">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <h2 style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 40px; text-align: center;">Side Orders</h2>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Jasmine Rice</h3></div>
+                                <span class="item-price">$3.00</span>
+                            </div>
+                        </article>
+                        
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Sticky Rice</h3></div>
+                                <span class="item-price">$4.00</span>
+                            </div>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Brown Rice</h3></div>
+                                <span class="item-price">$4.00</span>
+                            </div>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Steamed Noodles</h3></div>
+                                <span class="item-price">$4.00</span>
+                            </div>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Steamed Mixed Vegetables</h3></div>
+                                <span class="item-price">$7.00</span>
+                            </div>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Peanut Sauce</h3></div>
+                                <span class="item-price">$3.00</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-dessert" class="tab-panel" role="tabpanel" aria-labelledby="tab-dessert">
+                <div class="menu-frame">
+                    <div class="corner-flourish top-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish top-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                    
+                    <div class="editorial-split">
+                        <div class="editorial-image"><img src="images/enthaice-sip-02.jpg" alt="Thai Dessert"></div>
+                        <div class="editorial-text">
+                            <span class="editorial-label">A Sweet Finish</span>
+                            <h2>Desserts</h2>
+                            <p>The perfect way to cool down the palate. Traditional Thai sweets made with fresh tropical fruits and rich coconut cream.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <article class="menu-item highlight-box">
+                            <div class="item-header">
+                                <div class="item-title-wrap">
+                                    <h3 class="item-name">Mango Sticky Rice</h3>
+                                    <div class="dietary-icons" aria-label="Vegetarian, Gluten-Free">
+                                        <span class="icon-veg" aria-hidden="true">🌱</span>
+                                        <span class="icon-gf" aria-hidden="true">GF</span>
+                                    </div>
+                                </div>
+                                <span class="item-price">$10.00</span>
+                            </div>
+                            <p class="item-desc">Sweet, ripe mango served over warm coconut sticky rice, topped with toasted sesame seeds.</p>
+                        </article>
+
+                        <article class="menu-item">
+                            <div class="item-header">
+                                <div class="item-title-wrap"><h3 class="item-name">Fried Banana with Ice Cream</h3></div>
+                                <span class="item-price">$9.00</span>
+                            </div>
+                            <p class="item-desc">Crispy fried banana rolls served warm alongside a scoop of vanilla ice cream.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer aria-label="Site footer">
+        <div class="container">
+            <div class="footer-top">
+                
+                <div class="footer-brand">
+                    <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="footer-site-logo">
+                    <div class="social-icons" aria-label="Social media links">
+                        <a href="https://www.facebook.com/enthaiceastroia" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/enthaice_thai_kitchen" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <div>
+                        <a href="/">Home</a>
+                        <a href="/reservation">Reservation</a>
+                        <a href="/story">Our Story</a>
+                    </div>
+                    <div>
+                        <a href="/menu">Menu</a>
+                        <a href="/catering">Catering</a>
+                        <a href="/events">Events</a>
+                    </div>
+                    <div>
+                        <a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a>
+                        <a href="/faq">Q&A</a>
+                        <a href="mailto:contact.enthaicethaikitchen@gmail.com">Contact Us</a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/accessibility">Accessibility</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    © 2013 - <span id="currentYear"></span> Enthaice Thai Kitchen. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-bottom-bar">
+        <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+    </div>
+
+    <script>
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Hamburger Menu Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isActive = mobileMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', isActive);
+            body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            });
+        });
+
+        // Sticky Header Logic
+        const header = document.getElementById('site-header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // =========================================
+        // MENU TAB LOGIC WITH SMART SCROLL
+        // =========================================
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const menuContent = document.querySelector('.menu-content-container');
+        const headerElement = document.getElementById('site-header');
+        const ribbonContainer = document.querySelector('.tab-ribbon-container');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and panels
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                tabPanels.forEach(p => p.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding panel
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+                const targetPanel = document.getElementById(btn.getAttribute('aria-controls'));
+                targetPanel.classList.add('active');
+                
+                // Smart scroll back to the top of the menu content
+                // Use setTimeout to ensure DOM has updated panel heights before calculating scroll
+                setTimeout(() => {
+                    const headerHeight = headerElement.offsetHeight;
+                    const ribbonHeight = ribbonContainer.offsetHeight;
+                    
+                    // Calculate exact absolute position of the content container
+                    const contentAbsoluteTop = menuContent.getBoundingClientRect().top + window.scrollY;
+                    
+                    // Target position (content top minus sticky elements)
+                    // We subtract an extra 10px so the border of the frame has breathing room
+                    const scrollTarget = contentAbsoluteTop - headerHeight - ribbonHeight - 10;
+
+                    // Only scroll up if we are currently scrolled past the target
+                    if (window.scrollY > scrollTarget) {
+                        window.scrollTo({
+                            top: scrollTarget,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
