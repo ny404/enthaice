@@ -155,9 +155,26 @@
         .menu-hero h1 { font-size: 3.5rem; margin-bottom: 15px; font-style: italic; letter-spacing: 1px; }
         .menu-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-        /* Sticky Tab Ribbon */
-        .tab-ribbon-container { position: sticky; top: 111px; z-index: 1000; background-color: rgba(18, 16, 14, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(220, 179, 69, 0.2); padding: 0 5%; }
-        .tab-ribbon { display: flex; overflow-x: auto; gap: 35px; padding: 20px 0; max-width: 1440px; margin: 0 auto; scrollbar-width: none; -ms-overflow-style: none; }
+        /* Sticky Tab Ribbon & Arrows */
+        .tab-ribbon-container { 
+            position: sticky; top: 111px; z-index: 1000; 
+            background-color: rgba(18, 16, 14, 0.95); backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(220, 179, 69, 0.2); 
+        }
+        
+        .tab-ribbon-wrapper {
+            position: relative;
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .tab-ribbon { 
+            display: flex; overflow-x: auto; gap: 35px; padding: 20px 5%; 
+            width: 100%; scrollbar-width: none; -ms-overflow-style: none;
+        }
         .tab-ribbon::-webkit-scrollbar { display: none; }
         
         .tab-btn { background: none; border: none; color: var(--text-muted); font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; cursor: pointer; white-space: nowrap; transition: color 0.3s ease; padding: 5px 0; position: relative; text-transform: uppercase; letter-spacing: 1px; }
@@ -165,6 +182,38 @@
         .tab-btn:hover { color: var(--text-main); }
         .tab-btn.active { color: var(--accent-gold); }
         .tab-btn.active::after { width: 100%; }
+
+        /* Floating Scroll Arrows */
+        .ribbon-arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            background: transparent;
+            border: none;
+            color: var(--accent-gold);
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+        .ribbon-arrow:hover { color: var(--text-main); }
+        .ribbon-arrow svg { width: 30px; height: 30px; fill: currentColor; filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.8)); }
+        .ribbon-arrow.hidden { opacity: 0; pointer-events: none; }
+
+        .left-arrow {
+            left: 0;
+            justify-content: flex-start;
+            padding-left: 15px;
+            background: linear-gradient(to right, rgba(18,16,14,0.95) 40%, rgba(18,16,14,0));
+        }
+        .right-arrow {
+            right: 0;
+            justify-content: flex-end;
+            padding-right: 15px;
+            background: linear-gradient(to left, rgba(18,16,14,0.95) 40%, rgba(18,16,14,0));
+        }
 
         /* Content Area */
         .menu-content-container { padding: 60px 5% 120px; max-width: 1440px; margin: 0 auto; min-height: 60vh; }
@@ -264,7 +313,9 @@
             .editorial-split { flex-direction: column; gap: 30px; text-align: center; }
             .editorial-image img { aspect-ratio: 1/1; border-radius: 50%; width: 80%; margin: 0 auto; display: block; }
             
-            .tab-ribbon-container { top: 85px; padding: 0 20px; }
+            .tab-ribbon-container { top: 85px; }
+            .left-arrow { padding-left: 20px; }
+            .right-arrow { padding-right: 20px; }
             .menu-hero { padding: 140px 5% 40px; }
             .menu-hero h1 { font-size: 2.8rem; }
 
@@ -331,23 +382,33 @@
         </section>
 
         <div class="tab-ribbon-container">
-            <nav class="tab-ribbon" role="tablist" aria-label="Menu Categories">
-                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-snacks" id="tab-snacks">Snacks</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-soup" id="tab-soup">Soup</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-salad" id="tab-salad">Salad & Yum Yum</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-chef" id="tab-chef">Chef's Suggestions</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-fish" id="tab-fish">Fish Selections</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-seafood" id="tab-seafood">Mixed Seafood</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-meat" id="tab-meat">Meat & Poultry</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-veg" id="tab-veg">Vegetables</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle-soup" id="tab-noodle-soup">Noodle Soup</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle" id="tab-noodle">Noodle</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sauteed" id="tab-sauteed">Sautéed</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-curry" id="tab-curry">Curry</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-rice" id="tab-rice">Fried Rice</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sides" id="tab-sides">Side Order</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-dessert" id="tab-dessert">Dessert</button>
-            </nav>
+            <div class="tab-ribbon-wrapper">
+                <button class="ribbon-arrow left-arrow hidden" id="leftArrow" aria-label="Scroll categories left" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                
+                <nav class="tab-ribbon" id="tab-ribbon" role="tablist" aria-label="Menu Categories">
+                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-snacks" id="tab-snacks">Snacks</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-soup" id="tab-soup">Soup</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-salad" id="tab-salad">Salad & Yum Yum</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-chef" id="tab-chef">Chef's Suggestions</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-fish" id="tab-fish">Fish Selections</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-seafood" id="tab-seafood">Mixed Seafood</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-meat" id="tab-meat">Meat & Poultry</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-veg" id="tab-veg">Vegetables</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle-soup" id="tab-noodle-soup">Noodle Soup</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-noodle" id="tab-noodle">Noodle</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sauteed" id="tab-sauteed">Sautéed</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-curry" id="tab-curry">Curry</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-rice" id="tab-rice">Fried Rice</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-sides" id="tab-sides">Side Order</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-dessert" id="tab-dessert">Dessert</button>
+                </nav>
+
+                <button class="ribbon-arrow right-arrow" id="rightArrow" aria-label="Scroll categories right">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
         </div>
 
         <div class="menu-content-container">
@@ -1770,6 +1831,47 @@
                 }, 10);
             });
         });
+
+        // =========================================
+        // RIBBON ARROW SCROLL LOGIC
+        // =========================================
+        const ribbon = document.getElementById('tab-ribbon');
+        const leftArrow = document.getElementById('leftArrow');
+        const rightArrow = document.getElementById('rightArrow');
+
+        function updateArrowVisibility() {
+            if (!ribbon || !leftArrow || !rightArrow) return;
+            
+            if (ribbon.scrollLeft <= 5) {
+                leftArrow.classList.add('hidden');
+            } else {
+                leftArrow.classList.remove('hidden');
+            }
+
+            if (Math.ceil(ribbon.scrollLeft + ribbon.clientWidth) >= ribbon.scrollWidth - 5) {
+                rightArrow.classList.add('hidden');
+            } else {
+                rightArrow.classList.remove('hidden');
+            }
+        }
+
+        if (leftArrow && rightArrow && ribbon) {
+            leftArrow.addEventListener('click', () => {
+                ribbon.scrollBy({ left: -250, behavior: 'smooth' });
+            });
+
+            rightArrow.addEventListener('click', () => {
+                ribbon.scrollBy({ left: 250, behavior: 'smooth' });
+            });
+
+            ribbon.addEventListener('scroll', updateArrowVisibility);
+            window.addEventListener('load', updateArrowVisibility);
+            window.addEventListener('resize', updateArrowVisibility);
+            
+            if (document.fonts) {
+                document.fonts.ready.then(updateArrowVisibility);
+            }
+        }
         
         // =========================================
         // DYNAMIC GOOGLE SHEETS PRICING
