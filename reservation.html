@@ -384,42 +384,46 @@
                         <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                         <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
                         
-                        <form action="#" method="POST" class="custom-form" id="reservationForm">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="custom-form" id="reservationForm">
+                            
+                            <input type="hidden" name="access_key" value="2d4bbedf-600a-4ba0-b690-24e6b144e27d">
+                            
+                            <input type="hidden" name="subject" value="New Reservation Request - Enthaice Website">
                             
                             <div class="form-group">
                                 <label for="resName">Name <span class="req">*</span></label>
-                                <input type="text" id="resName" name="resName" class="form-control" placeholder="Name" required>
+                                <input type="text" id="resName" name="Name" class="form-control" placeholder="Name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="resEmail">Email <span class="req">*</span></label>
-                                <input type="email" id="resEmail" name="resEmail" class="form-control" placeholder="Email" required>
+                                <input type="email" id="resEmail" name="Email" class="form-control" placeholder="Email" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="resPhone">Phone <span class="req">*</span></label>
-                                <input type="tel" id="resPhone" name="resPhone" class="form-control" placeholder="Phone" required>
+                                <input type="tel" id="resPhone" name="Phone" class="form-control" placeholder="Phone" required>
                             </div>
 
                             <div class="datetime-row">
                                 <div class="form-group">
                                     <label for="resDate">Date and time of reservation <span class="req">*</span></label>
-                                    <input type="date" id="resDate" name="resDate" class="form-control" required>
+                                    <input type="date" id="resDate" name="Date" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="resTime" class="sr-only">Time</label>
-                                    <input type="time" id="resTime" name="resTime" class="form-control" style="margin-top: 26px;" required>
+                                    <input type="time" id="resTime" name="Time" class="form-control" style="margin-top: 26px;" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="resDesc">Describe your reservation <span class="req">*</span></label>
-                                <textarea id="resDesc" name="resDesc" class="form-control" placeholder="" required></textarea>
+                                <textarea id="resDesc" name="Description" class="form-control" placeholder="" required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="resPeople">Number of people attending <span class="req">*</span></label>
-                                <select id="resPeople" name="resPeople" class="form-control" required>
+                                <select id="resPeople" name="Party Size" class="form-control" required>
                                     <option value="" disabled selected>Select an option</option>
                                     <option value="1-9">1-9</option>
                                     <option value="10-20">10-20</option>
@@ -429,7 +433,7 @@
 
                             <div class="form-group">
                                 <label for="resCatering">Will you need catering? <span class="req">*</span></label>
-                                <select id="resCatering" name="resCatering" class="form-control" required>
+                                <select id="resCatering" name="Catering Requested" class="form-control" required>
                                     <option value="No" selected>No</option>
                                     <option value="Yes">Yes</option>
                                 </select>
