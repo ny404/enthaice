@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations | Enthaice Thai Kitchen - Astoria, NY</title>
+    <meta name="description" content="Book a table at Enthaice Thai Kitchen in Astoria, Queens. Join us for bold Northern Thai flavors and signature cocktails.">
+    
+    <link rel="icon" type="image/png" href="enthaice-favicon.png">
+    <link rel="apple-touch-icon" href="enthaice-apple-touch.png">
+
+    <style>
+        /* =========================================
+           LOCAL FONTS (LOCKED)
+           ========================================= */
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Light.woff2') format('woff2'), url('fonts/Poppins-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Regular.woff2') format('woff2'), url('fonts/Poppins-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-Medium.woff2') format('woff2'), url('fonts/Poppins-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Poppins'; src: url('fonts/Poppins-SemiBold.woff2') format('woff2'), url('fonts/Poppins-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Regular.woff2') format('woff2'), url('fonts/Lora-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Italic.woff2') format('woff2'), url('fonts/Lora-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-Medium.woff2') format('woff2'), url('fonts/Lora-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Lora'; src: url('fonts/Lora-SemiBold.woff2') format('woff2'), url('fonts/Lora-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+        
+        /* Dark & Gold Palette */
+        :root {
+            --bg-main: #12100e; 
+            --bg-card: #1c1916; 
+            --bg-footer: #0a0908;
+            --accent-gold: #dcb345;
+            --accent-gold-hover: #bda036;
+            --text-main: #f5f5f5;
+            --text-muted: #a09d98;
+            --font-heading: 'Lora', serif;
+            --font-body: 'Poppins', sans-serif;
+            --focus-outline: 2px solid var(--accent-gold);
+            --error-red: #e63946;
+        }
+
+        /* Accessibility: Screen Reader Only Text */
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Changed overflow-x: hidden to clip to allow position: sticky to work properly */
+        body { font-family: var(--font-body); background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; overflow-x: clip; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 500; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        
+        /* STRICT 1440px LAYOUT */
+        .container { max-width: 1440px; margin: 0 auto; width: 100%; }
+        
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: var(--focus-outline); outline-offset: 4px; }
+
+        /* Skip Link & Buttons */
+        .skip-link { position: absolute; top: -100px; left: 0; background: var(--accent-gold); color: #000; padding: 12px 24px; z-index: 3000; transition: top 0.3s ease; font-weight: 600; border-bottom-right-radius: 4px; }
+        .skip-link:focus { top: 0; }
+        .btn-primary { background-color: var(--accent-gold); color: #000; padding: 12px 30px; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; display: inline-block; transition: background-color 0.3s ease, transform 0.2s ease; border: none; cursor: pointer; text-align: center; }
+        .btn-primary:hover { background-color: var(--accent-gold-hover); transform: translateY(-2px); }
+
+        /* Header */
+        header { padding: 25px 5%; background-color: transparent; position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; transition: background-color 0.4s ease, padding 0.4s ease, transform 0.4s ease; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        header.scrolled { background-color: rgba(18, 16, 14, 0.95); backdrop-filter: blur(10px); padding: 15px 5%; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo-link { display: inline-block; transition: opacity 0.3s ease; z-index: 2001; }
+        .logo-link:hover { opacity: 0.8; }
+        .site-logo { height: 80px; width: auto; display: block; transition: height 0.3s ease; }
+        .main-nav { display: flex; align-items: center; gap: 40px; }
+        .nav-links { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; color: var(--text-main); }
+        .nav-links a:hover { color: var(--accent-gold); }
+
+        /* Mobile Hamburger Icon */
+        .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 32px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 2001; }
+        .hamburger span { width: 100%; height: 2px; background-color: var(--accent-gold); border-radius: 2px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--bg-main); z-index: 1500; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-nav-links { list-style: none; text-align: center; padding: 0; margin: 0; }
+        .mobile-nav-links li { margin-bottom: 35px; transform: translateY(20px); opacity: 0; transition: transform 0.4s ease, opacity 0.4s ease; }
+        .mobile-menu-overlay.active .mobile-nav-links li { transform: translateY(0); opacity: 1; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-menu-overlay.active .mobile-nav-links li:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-links a { font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-main); }
+        .mobile-nav-links a:hover { color: var(--accent-gold); }
+        .mobile-bottom-bar { display: none; }
+
+        /* =========================================
+           RESERVATION PAGE STYLES
+           ========================================= */
+
+        /* Page Hero */
+        .page-hero { padding: 180px 5% 60px; text-align: center; background: radial-gradient(circle at top, rgba(220, 179, 69, 0.08) 0%, transparent 60%); }
+        .page-hero h1 { font-size: 3.5rem; margin-bottom: 15px; font-style: italic; letter-spacing: 1px; }
+        .page-hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        .reservation-content {
+            padding: 40px 5% 120px;
+        }
+
+        /* Top Grid: Image + Intro */
+        .reservation-top-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .res-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .res-intro-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        .res-intro-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* Bottom Grid: Form Text + Form */
+        .reservation-bottom-row {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start; /* Critical: allows the child elements to not stretch forcibly */
+        }
+
+        /* The Sticky Element */
+        .res-text-block {
+            position: sticky;
+            top: 130px; /* Rests below the fixed header */
+        }
+
+        .res-text-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .res-text-block p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Ornate Form Frame */
+        .reservation-frame {
+            background-color: var(--bg-card);
+            border-radius: 4px;
+            padding: 50px 40px; 
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(220, 179, 69, 0.5);
+            outline: 1px solid rgba(220, 179, 69, 0.15);
+            outline-offset: -10px;
+        }
+        
+        .corner-flourish { position: absolute; width: 40px; height: 40px; pointer-events: none; }
+        .corner-flourish svg { fill: var(--accent-gold); opacity: 0.6; width: 100%; height: 100%; }
+        .top-left { top: 15px; left: 15px; }
+        .top-right { top: 15px; right: 15px; transform: scaleX(-1); }
+        .bottom-left { bottom: 15px; left: 15px; transform: scaleY(-1); }
+        .bottom-right { bottom: 15px; right: 15px; transform: scale(-1, -1); }
+
+        /* Form Elements */
+        .custom-form {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group label .req {
+            color: var(--error-red);
+        }
+        .form-control {
+            width: 100%;
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 14px 15px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(220, 179, 69, 0.2);
+        }
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        
+        /* Select Dropdowns */
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a09d98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            cursor: pointer;
+        }
+        select.form-control option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            padding: 10px;
+        }
+
+        /* Textarea specific */
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Grid for Date & Time */
+        .datetime-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            margin-top: 10px;
+            padding: 16px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer { background-color: var(--bg-main); padding: 80px 5% 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 60px; }
+        .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+        .footer-site-logo { max-width: 250px; height: auto; display: block; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a svg { width: 20px; height: 20px; fill: var(--text-muted); transition: fill 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--accent-gold); }
+        .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+        .footer-nav a { display: block; color: var(--text-main); margin-bottom: 12px; font-size: 0.95rem; transition: color 0.3s ease; }
+        .footer-nav a:hover { color: var(--accent-gold); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 25px; flex-wrap: wrap; gap: 20px; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+        .footer-bottom-links a:hover { color: var(--accent-gold); }
+
+        /* Media Queries */
+        @media (max-width: 900px) {
+            .site-logo { height: 55px; } 
+            .nav-links, .desktop-order-btn { display: none; }
+            .hamburger { display: flex; }
+            body { padding-bottom: 70px; }
+            .mobile-bottom-bar { display: block; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2500; background-color: var(--bg-main); box-shadow: 0 -5px 20px rgba(0,0,0,0.6); }
+            .mobile-bottom-bar .btn-primary { width: 100%; border-radius: 0; padding: 18px; text-align: center; font-size: 1.05rem; }
+            
+            .page-hero { padding: 140px 5% 40px; }
+            .page-hero h1 { font-size: 2.8rem; }
+
+            .reservation-top-row, .reservation-bottom-row { 
+                grid-template-columns: 1fr; 
+                gap: 50px; 
+            }
+            .reservation-top-row {
+                margin-bottom: 60px;
+            }
+            
+            /* Disable sticky behavior safely on smaller screens */
+            .res-text-block {
+                position: relative;
+                top: 0;
+            }
+
+            .reservation-frame { padding: 40px 20px; outline-offset: -6px; }
+            .datetime-row { grid-template-columns: 1fr; gap: 0; }
+
+            .footer-top { flex-direction: column; align-items: center; text-align: center; }
+            .footer-brand { align-items: center; } 
+            .social-icons { justify-content: center; } 
+            .footer-nav { grid-template-columns: repeat(2, 1fr); text-align: center; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .footer-nav { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="site-header">
+        <div class="container">
+            <a href="/" class="logo-link" aria-label="Enthaice Thai Kitchen Home">
+                <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="site-logo">
+            </a>
+            
+            <nav aria-label="Main navigation" class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/reservation" style="color: var(--accent-gold);">Reservations</a></li>
+                    <li><a href="/catering">Catering & Events</a></li>
+                    <li><a href="/story">About Us</a></li>
+                    <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+                </ul>
+                <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary desktop-order-btn" target="_blank" rel="noopener noreferrer">Order Online</a>
+                
+                <button class="hamburger" id="hamburger-btn" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/reservation" style="color: var(--accent-gold);">Reservations</a></li>
+            <li><a href="/catering">Catering & Events</a></li>
+            <li><a href="/story">About Us</a></li>
+            <li><a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        
+        <section class="page-hero">
+            <div class="container">
+                <h1>Reserve Your Table</h1>
+                <p>Secure your spot and get ready to experience the bold, uncompromising flavors of Northern Thailand right here in Astoria.</p>
+            </div>
+        </section>
+
+        <section class="reservation-content">
+            <div class="container">
+                
+                <div class="reservation-top-row">
+                    <img src="images/enthaice-welcome-image.jpg" alt="Interior dining room of Enthaice Thai Kitchen" class="res-image">
+                    
+                    <div class="res-intro-text">
+                        <h2>Reserve Your Spot</h2>
+                        <p>Booking ahead is the best way to make sure your table is ready when you are. Whether it's a casual lunch or a night out with friends, we'll have your seat waiting—no hassle, just great food and good timing.</p>
+                        <p>Reservations are welcome but never required. Walk-ins always accepted.</p>
+                    </div>
+                </div>
+
+                <div class="reservation-bottom-row">
+                    
+                    <div class="res-text-block">
+                        <h3>Make a reservation at our restaurant</h3>
+                        <p>Please complete the form below to request a reservation at our restaurant.</p>
+                    </div>
+
+                    <div class="reservation-frame">
+                        <div class="corner-flourish top-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                        <div class="corner-flourish top-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                        <div class="corner-flourish bottom-left"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                        <div class="corner-flourish bottom-right"><svg viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M0,0 L100,0 C100,55.23 55.23,100 0,100 L0,0 Z" fill="currentColor"/></svg></div>
+                        
+                        <form action="#" method="POST" class="custom-form" id="reservationForm">
+                            
+                            <div class="form-group">
+                                <label for="resName">Name <span class="req">*</span></label>
+                                <input type="text" id="resName" name="resName" class="form-control" placeholder="Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resEmail">Email <span class="req">*</span></label>
+                                <input type="email" id="resEmail" name="resEmail" class="form-control" placeholder="Email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resPhone">Phone <span class="req">*</span></label>
+                                <input type="tel" id="resPhone" name="resPhone" class="form-control" placeholder="Phone" required>
+                            </div>
+
+                            <div class="datetime-row">
+                                <div class="form-group">
+                                    <label for="resDate">Date and time of reservation <span class="req">*</span></label>
+                                    <input type="date" id="resDate" name="resDate" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="resTime" class="sr-only">Time</label>
+                                    <input type="time" id="resTime" name="resTime" class="form-control" style="margin-top: 26px;" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resDesc">Describe your reservation <span class="req">*</span></label>
+                                <textarea id="resDesc" name="resDesc" class="form-control" placeholder="" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resPeople">Number of people attending <span class="req">*</span></label>
+                                <select id="resPeople" name="resPeople" class="form-control" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="1-9">1-9</option>
+                                    <option value="10-20">10-20</option>
+                                    <option value="20+">20+</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="resCatering">Will you need catering? <span class="req">*</span></label>
+                                <select id="resCatering" name="resCatering" class="form-control" required>
+                                    <option value="No" selected>No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn-primary btn-submit">SEND RESERVATION REQUEST</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer aria-label="Site footer">
+        <div class="container">
+            <div class="footer-top">
+                
+                <div class="footer-brand">
+                    <img src="images/enthaice-logo.png" alt="Enthaice Thai Kitchen Logo" class="footer-site-logo">
+                    <div class="social-icons" aria-label="Social media links">
+                        <a href="https://www.facebook.com/enthaiceastroia" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/enthaice_thai_kitchen" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <div>
+                        <a href="/">Home</a>
+                        <a href="/reservation">Reservation</a>
+                        <a href="/story">Our Story</a>
+                    </div>
+                    <div>
+                        <a href="/menu">Menu</a>
+                        <a href="/catering">Catering</a>
+                        <a href="/events">Events</a>
+                    </div>
+                    <div>
+                        <a href="https://order.toasttab.com/egiftcards/enthaice-thai-kitchen-3320-31st-ave" target="_blank" rel="noopener noreferrer">Gift Cards</a>
+                        <a href="/faq">Q&A</a>
+                        <a href="mailto:contact.enthaicethaikitchen@gmail.com">Contact Us</a>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/accessibility">Accessibility</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    © 2013 - <span id="currentYear"></span> Enthaice Thai Kitchen. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-bottom-bar">
+        <a href="https://order.toasttab.com/online/enthaice-thai-kitchen-3320-31st-ave" class="btn-primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+    </div>
+
+    <script>
+        // Dynamic Copyright Year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Hamburger Menu Logic
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body;
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isActive = mobileMenu.classList.toggle('active');
+            hamburgerBtn.classList.toggle('active');
+            hamburgerBtn.setAttribute('aria-expanded', isActive);
+            body.style.overflow = isActive ? 'hidden' : '';
+        });
+
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            });
+        });
+
+        // Sticky Header Logic
+        const header = document.getElementById('site-header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
